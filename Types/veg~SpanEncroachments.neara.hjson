@@ -175,7 +175,7 @@
             viz("style", "blue bg_color:white font_size:15",
               list(
               viz("text",distance_to_veg.start + (distance_to_veg.end - distance_to_veg.start)*0.5,
-                text_unit(distance_to_veg.distance,"m",2) & "\n" &
+                text_unit(distance_to_veg.distance,"ft",2) & "\n" &
                 encroachment_key
                  ))
               ),

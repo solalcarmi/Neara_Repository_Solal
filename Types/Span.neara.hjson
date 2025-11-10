@@ -3,6 +3,14 @@
   is_custom_class: false
   fields: [
     {
+      name: "veg~u_bay"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "index(pole1.label, 0)"
+    }
+    {
       name: "veg~u_bay_worst_encroachment"
       prominence: "normal"
       documentation: null
@@ -49,6 +57,14 @@
           )
         )
         '''
+    }
+    {
+      name: "veg~u_dynamic_line_rating"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: ""
     }
     {
       name: "veg~u_encroached"
@@ -524,7 +540,17 @@
       documentation: null
       visibility: "module"
       type: "formula"
-      formula: "u_required_clearance_details.clearance_radial_middle"
+      formula:
+        '''
+        (u_voltage_2 - 22kV)*0.4/12ft
+        /unit("kV")
+        +
+        parse_num(find(model().dt_nesc_232[].clearance_22kv,
+                       model().dt_nesc_232[].nature = "4 Forest"
+                       ))
+                  *
+                  unit("ft")
+        '''
     }
     {
       name: "veg~u_required_clearance_details"
@@ -602,12 +628,28 @@
       formula: ""
     }
     {
+      name: "veg~u_test_dlr"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "u_wind_sweep_body"
+    }
+    {
       name: "veg~u_test_so"
       prominence: "normal"
       documentation: null
       visibility: "public"
       type: "formula"
-      formula: "model().u_show_fall_in_arcs"
+      formula: "u_veg_environment"
+    }
+    {
+      name: "veg~u_test_soso"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: ""
     }
     {
       name: "veg~u_the_global_id"
@@ -761,7 +803,7 @@
                 list(
                   viz("line",u_custom_env_sim.u_veg_dist.start,u_custom_env_sim.u_veg_dist.end),
                   viz("text",u_custom_env_sim.u_veg_dist.start + (u_custom_env_sim.u_veg_dist.end - u_custom_env_sim.u_veg_dist.start)*0.5,
-                    text_unit(u_custom_env_sim.u_veg_dist.distance,"m",2)
+                    text_unit(u_custom_env_sim.u_veg_dist.distance,"ft",2)
                   )  
                 )
               )
@@ -781,6 +823,27 @@
         if(
           model().u_show_fall_in_arcs,
           viz(u_trees[].viz_arc_to_span)
+        )
+        '''
+    }
+    {
+      name: "veg~u_viz_oh_dynamic_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        let(
+          points: u_custom_env_sim.u_points_oh_veg,
+          class: "OH",
+          if(
+            and(
+              model().u_show_veg_pc_colouring_encroachments,
+              any(model().u_selected_encroachment_key_pc_colour = list("All",class)),
+            ),
+            points
+          )
         )
         '''
     }
@@ -824,6 +887,29 @@
               selected
             ),
             viz
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_viz_p1_dynamic_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        let(
+          points: u_custom_env_sim.u_p1_points,
+          class: "P1",
+            
+          if(
+            and(
+              model().u_show_veg_pc_colouring_encroachments,
+              any(model().u_selected_encroachment_key_pc_colour = list("All",class)),
+              points.num_points > 0,
+            ),
+            points
           )
         )
         '''
@@ -875,6 +961,29 @@
         '''
     }
     {
+      name: "veg~u_viz_p2_dynamic_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        let(
+          points: u_custom_env_sim.u_p2_points,
+          class: "P2",
+            
+          if(
+            and(
+              model().u_show_veg_pc_colouring_encroachments,
+              any(model().u_selected_encroachment_key_pc_colour = list("All",class)),
+              points.num_points > 0,
+            ),
+            points
+          )
+        )
+        '''
+    }
+    {
       name: "veg~u_viz_p2_points"
       prominence: "normal"
       documentation: null
@@ -921,6 +1030,29 @@
         '''
     }
     {
+      name: "veg~u_viz_p3_dynamic_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        let(
+          points: u_custom_env_sim.u_p3_points,
+          class: "P3",
+            
+          if(
+            and(
+              model().u_show_veg_pc_colouring_encroachments,
+              any(model().u_selected_encroachment_key_pc_colour = list("All",class)),
+              points.num_points > 0,
+            ),
+            points
+          )
+        )
+        '''
+    }
+    {
       name: "veg~u_viz_p3_points"
       prominence: "normal"
       documentation: null
@@ -962,6 +1094,29 @@
               selected
             ),
             viz
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_viz_p4_dynamic_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        let(
+          points: u_custom_env_sim.u_p4_points,
+          class: "P4",
+            
+          if(
+            and(
+              model().u_show_veg_pc_colouring_encroachments,
+              any(model().u_selected_encroachment_key_pc_colour = list("All",class)),
+              points.num_points > 0,
+            ),
+            points
           )
         )
         '''
@@ -1162,7 +1317,7 @@
       documentation: null
       visibility: "public"
       type: "formula"
-      formula: "u_closest_gis.item.voltage"
+      formula: "345kV"
     }
     {
       name: "veg~u_wind_direction_vector"

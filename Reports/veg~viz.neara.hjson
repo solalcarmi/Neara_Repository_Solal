@@ -1,6 +1,6 @@
 {
-  id: "2d1a2a4c4a34fa742bd9017"
-  title: "veg~viz"
+  id: "ac82d09274ca79b52b6a5460"
+  title: "veg~Viz"
   description: null
   root: "Model"
   favorite: false
@@ -32,7 +32,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 138
+        width_px: 163
         quicksearch: false
         search_option: "none"
         show_spatial: false
@@ -52,7 +52,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 147
+        width_px: 163
         quicksearch: false
         search_option: "none"
         show_spatial: true
@@ -72,7 +72,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 138
+        width_px: 163
         quicksearch: false
         search_option: "none"
         show_spatial: true
@@ -92,7 +92,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 138
+        width_px: 163
         quicksearch: false
         search_option: "none"
         show_spatial: true
@@ -112,7 +112,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 138
+        width_px: 163
         quicksearch: false
         search_option: "none"
         show_spatial: true
@@ -132,7 +132,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 138
+        width_px: 163
         quicksearch: false
         search_option: "none"
         show_spatial: true
@@ -152,7 +152,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 138
+        width_px: 163
         quicksearch: false
         search_option: "none"
         show_spatial: true
@@ -172,7 +172,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 138
+        width_px: 163
         quicksearch: false
         search_option: "none"
         show_spatial: true
@@ -192,7 +192,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 138
+        width_px: 163
         quicksearch: false
         search_option: "none"
         show_spatial: true
@@ -212,7 +212,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 138
+        width_px: 163
         quicksearch: false
         search_option: "none"
         show_spatial: true
@@ -232,7 +232,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 138
+        width_px: 163
         quicksearch: false
         search_option: "none"
         show_spatial: true
@@ -252,7 +252,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 138
+        width_px: 163
         quicksearch: false
         search_option: "none"
         show_spatial: true
@@ -272,7 +272,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 138
+        width_px: 163
         quicksearch: false
         search_option: "none"
         show_spatial: true
@@ -292,7 +292,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 138
+        width_px: 163
         quicksearch: false
         search_option: "none"
         show_spatial: true
@@ -312,10 +312,110 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 138
+        width_px: 163
         quicksearch: false
         search_option: "none"
         show_spatial: true
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_viz_p1_dynamic_points"
+        title: "Viz P1 Dynamic Points"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 120
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_viz_p2_dynamic_points"
+        title: "Viz P2 Dynamic Points"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 120
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_viz_p3_dynamic_points"
+        title: "Viz P3 Dynamic Points"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 120
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_viz_p4_dynamic_points"
+        title: "Viz P4 Dynamic Points"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 120
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_viz_oh_dynamic_points"
+        title: "Viz Oh Dynamic Points"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 120
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
         grouped: false
         colored: false
         color_map: {
@@ -332,10 +432,50 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 140
+        width_px: 215
         quicksearch: false
         search_option: "none"
         show_spatial: true
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_viz_rate_span"
+        title: "Viz Rate Span"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 90
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_custom_env_sim.veg~u_veg_dist"
+        title: "Custom Env Sim Veg Dist"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 120
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
         grouped: false
         colored: false
         color_map: {

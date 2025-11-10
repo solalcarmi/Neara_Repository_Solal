@@ -1,0 +1,14 @@
+{
+  token: "dt_trees"
+  is_custom_class: false
+  fields: [
+    {
+      name: "veg~u_test_env"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: ""
+    }
+  ]
+}

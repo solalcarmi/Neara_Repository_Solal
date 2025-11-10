@@ -1,5 +1,5 @@
 {
-  id: "75752223ae872e28be2d19"
+  id: "71b80b6ca1f6c6617a6b1b"
   organization_module_ref: {
     organization_module_id: "MCg6ee7IqbcQ"
     organization_module_version_id: "Mos49MY6c67E"
@@ -7,7 +7,7 @@
   title: "Veg Management"
   key: "veg"
   description: ""
-  lock: "unlocked"
+  lock: "locked"
   language_enhancement_config: {
     language_enhancements: []
   }
