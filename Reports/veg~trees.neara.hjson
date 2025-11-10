@@ -12,7 +12,20 @@
         {
           collection: "dt_trees"
           filter: {
-            conditions: []
+            conditions: [
+              {
+                type: "annotated"
+                annotated: {
+                  name: "col:energuate_vm~u_is_there_fall_in_risk"
+                  expr: {
+                    type: "field"
+                    field: {
+                      name: "energuate_vm~u_is_there_fall_in_risk"
+                    }
+                  }
+                }
+              }
+            ]
             bounds_filter: "none"
             quick_search: null
           }
@@ -32,7 +45,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 163
+        width_px: 219
         quicksearch: false
         search_option: "none"
         show_spatial: false
@@ -52,7 +65,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 163
+        width_px: 219
         quicksearch: false
         search_option: "none"
         show_spatial: true
@@ -72,7 +85,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 163
+        width_px: 219
         quicksearch: false
         search_option: "none"
         show_spatial: true
@@ -92,7 +105,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 163
+        width_px: 219
         quicksearch: false
         search_option: "none"
         show_spatial: false
@@ -112,7 +125,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 163
+        width_px: 219
         quicksearch: false
         search_option: "none"
         show_spatial: false

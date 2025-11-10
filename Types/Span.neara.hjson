@@ -829,7 +829,7 @@
     {
       name: "veg~u_viz_oh_dynamic_points"
       prominence: "normal"
-      documentation: null
+      documentation: "Does x, y, z"
       visibility: "public"
       type: "formula"
       formula:
@@ -894,7 +894,7 @@
     {
       name: "veg~u_viz_p1_dynamic_points"
       prominence: "normal"
-      documentation: null
+      documentation: "Does x, y, z"
       visibility: "public"
       type: "formula"
       formula:

@@ -7,7 +7,7 @@
   title: "Veg Management"
   key: "veg"
   description: ""
-  lock: "locked"
+  lock: "unlocked"
   language_enhancement_config: {
     language_enhancements: []
   }
