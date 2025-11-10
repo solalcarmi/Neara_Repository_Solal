@@ -1,0 +1,340 @@
+{
+  token: "veg~ct_Trees"
+  is_custom_class: true
+  fields: [
+    {
+      name: "affected_tree_height"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        top_tree_point.z - get_terrain_height(top_tree_point)
+        '''
+    }
+    {
+      name: "centroid"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "get_centroid(tree.geometry)"
+    }
+    {
+      name: "encroachment_key"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "prune_zone_key"
+    }
+    {
+      name: "fir_tree"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "any(nearby_bays[].u_gis_spans[].u_fir_trees[].tree = self)"
+    }
+    {
+      name: "geom"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "tree.geometry"
+    }
+    {
+      name: "has_nearby_bay"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "len(nearby_bays) > 0"
+    }
+    {
+      name: "health_index"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        tree_satellite_record.tree_health_index_key&""
+        '''
+    }
+    {
+      name: "nearby_bays"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        geo_query(
+          model().SpanStacks,
+          geom,
+          50ft
+        )
+        '''
+    }
+    {
+      name: "nearest_bay"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "index(nearby_bays,0)"
+    }
+    {
+      name: "nearest_bay_dist"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        index(
+          geo_query_details(
+            model().SpanStacks,
+            geom,
+            50ft,
+          )
+        ,0).distance
+        '''
+    }
+    {
+      name: "p1_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        if(
+          and(nearby_bays,points.num_points > 0),
+          let(  
+            bay_points: combine_points(nearby_bays[].u_gis_spans[].u_veg_environment[].u_p1_points),
+            label: "veg_p1",
+            
+            if(bay_points.num_points > 0,    
+              let(
+                veg_points: intersect_points(bay_points,points,label),
+                if(veg_points.num_points > 0,veg_points)
+              )
+            )
+          ) 
+        )
+        '''
+    }
+    {
+      name: "p2_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        if(
+          and(nearby_bays,points.num_points > 0),
+          let(  
+            bay_points: combine_points(nearby_bays[].u_gis_spans[].u_veg_environment[].u_p2_points),
+            label: "veg_p2",
+            
+            if(bay_points.num_points > 0,    
+              let(
+                veg_points: intersect_points(bay_points,points,label),
+                if(veg_points.num_points > 0,veg_points)
+              )
+            )
+          ) 
+        )
+        '''
+    }
+    {
+      name: "p3_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        if(
+          and(nearby_bays,points.num_points > 0),
+          let(  
+            bay_points: combine_points(nearby_bays[].u_gis_spans[].u_veg_environment[].u_p3_points),
+            label: "veg_p3",
+            
+            if(bay_points.num_points > 0,    
+              let(
+                veg_points: intersect_points(bay_points,points,label),
+                if(veg_points.num_points > 0,veg_points)
+              )
+            )
+          ) 
+        )
+        '''
+    }
+    {
+      name: "p4_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        if(
+          and(nearby_bays,points.num_points > 0),
+          let(  
+            bay_points: combine_points(nearby_bays[].u_gis_spans[].u_veg_environment[].u_p4_points),
+            label: "veg_p4",
+            if(bay_points.num_points > 0,
+            
+              let(
+                veg_points: intersect_points(bay_points,points,label),
+                if(veg_points.num_points > 0,veg_points)
+              )
+            )
+          ) 
+        )
+        '''
+    }
+    {
+      name: "points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        categorize_volume(volume,"tree_points","veg")
+        '''
+    }
+    {
+      name: "prune_zone_key"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+          p1_points.num_points > 0, "P1",
+          p2_points.num_points > 0, "P2",
+          p3_points.num_points > 0, "P3",
+          p4_points.num_points > 0, "P4",
+        )
+        '''
+    }
+    {
+      name: "report_global_id"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "tree.veg_item"
+    }
+    {
+      name: "test"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: ""
+    }
+    {
+      name: "top_tree_point"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "get_highest_point(points)"
+    }
+    {
+      name: "tree"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "index(model().dt_trees,-1)"
+    }
+    {
+      name: "tree_base"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "vec3(vec2(top_tree_point), top_tree_point.z - affected_tree_height)"
+    }
+    {
+      name: "tree_height"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "tree_highest_z - tree_terrain_height"
+    }
+    {
+      name: "tree_highest_z"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "get_bounds(points).max.z"
+    }
+    {
+      name: "tree_id"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "tree.veg_item"
+    }
+    {
+      name: "tree_loc"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        reproject(
+          centroid,
+          from_srid: model().srid,
+          to_srid: "4326"
+        )
+        '''
+    }
+    {
+      name: "tree_satellite_record"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        find(
+          model().dt_tree_satellite,
+          geo_intersect(model().dt_tree_satellite[].geometry,geom)
+        )
+        '''
+    }
+    {
+      name: "tree_terrain_height"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "get_terrain_height(centroid)"
+    }
+    {
+      name: "volume"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "polygon_to_volume(tree.geometry,true,100m,200m)"
+    }
+  ]
+}

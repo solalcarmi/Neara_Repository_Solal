@@ -1,0 +1,84 @@
+{
+  token: "veg~ct_ServiceCenters"
+  is_custom_class: true
+  fields: [
+    {
+      name: "active_feeder_trim_cost"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "sum(details[].estimated_trim_cost)"
+    }
+    {
+      name: "average_accessibility_index"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "average(details[].u_accessibility_index)"
+    }
+    {
+      name: "average_adjusted_rate_per_mile"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "average(details[].u_adjusted_rate_per_mile)"
+    }
+    {
+      name: "details"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        filter(
+          model().dt_feeder_summary2,
+          model().dt_feeder_summary2[].u_service_center = service_center
+        )
+        '''
+    }
+    {
+      name: "encroached_feeder_length"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "sum(details[].encroached_length_ml)"
+    }
+    {
+      name: "service_center"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "serviced_feeder_count"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "len(details)"
+    }
+    {
+      name: "serviced_feeder_length"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "sum(details[].total_length_ml)"
+    }
+    {
+      name: "total_feeder_trim_cost"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "sum(details[].u_feeder_trim_cost)"
+    }
+  ]
+}

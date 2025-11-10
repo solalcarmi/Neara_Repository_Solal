@@ -1,0 +1,1076 @@
+{
+  token: "Model"
+  is_custom_class: false
+  fields: [
+    {
+      name: "veg~u_activated_analytics_report"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "veg~u_analytic_report_list"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        list(
+          "Span Encroachment",
+          "Fall-in Risk",
+          "Fall-in w/o Encroachment",
+        )
+        '''
+    }
+    {
+      name: "veg~u_analytics_report_activation"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          other_reports: filter(AnalyticsReports,AnalyticsReports <> u_selected_analytic_server_report),          
+          if(
+            u_selected_analytic_server_report,
+            ui_button(
+              "Activate View", 
+              do(
+                u_selected_analytic_server_report.u_visualize_on,
+                other_reports[].u_visualize_off, 
+                make_field_mutation(self, u_activated_analytics_report: u_selected_analytics_report),
+               ),
+                enabled: u_activated_analytics_report <> u_selected_analytics_report
+            )
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_buffer_zone_increment"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "real"
+      unit: "m"
+    }
+    {
+      name: "veg~u_cust_env_temp_wire"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "real"
+      unit: "fahrenheit"
+    }
+    {
+      name: "veg~u_cust_env_wind_direction"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "real"
+      unit: ""
+    }
+    {
+      name: "veg~u_cust_env_wind_direction_radians"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "u_cust_env_wind_direction*pi()/180 // + pi()"
+    }
+    {
+      name: "veg~u_cust_env_wind_magnitude_factor"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        min(parse_num(model().u_cust_env_wind_pressure&"")*0.05,20)
+        '''
+    }
+    {
+      name: "veg~u_cust_env_wind_pressure"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "real"
+      unit: "Pa"
+    }
+    {
+      name: "veg~u_cvv_radius"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "real"
+      unit: "mm"
+    }
+    {
+      name: "veg~u_db_report_cost_per_mile"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        get_analytics_report_visible_rows("veg~Span_dbCostPerMile")
+        '''
+    }
+    {
+      name: "veg~u_db_selected_circuit"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        list("BLUEA2102/Primary Conductor - OH"&"")
+        '''
+    }
+    {
+      name: "veg~u_enable_custom_env"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "boolean"
+    }
+    {
+      name: "veg~u_enable_rate_span"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "boolean"
+    }
+    {
+      name: "veg~u_encroachment_colour_map"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        map(
+          "P1", "red",
+          "P2", "orange",
+          "P3", "yellow",
+          "P4", "cyan",
+        )
+        '''
+    }
+    {
+      name: "veg~u_epoch"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        parse_timestamp("yyyy-MM-ddTHH:mm:ssZ", "1970-01-01T00:00:00Z+00")
+        '''
+    }
+    {
+      name: "veg~u_filter_district_formula"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+          or(u_filter_district_selected = "",u_filter_district_selected = null, u_filter_district_selected = "all"),
+          
+          list("MID","ODE"),
+          list(u_filter_district_selected)
+        )
+        '''
+    }
+    {
+      name: "veg~u_filter_district_select"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          options: list("all","MID","ODE"),
+          
+          ui_input_suggest(self,"u_filter_district_selected",options)
+        )
+        '''
+    }
+    {
+      name: "veg~u_filter_district_selected"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "veg~u_filter_encroachment_formula"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+          or(u_filter_encroachment_selected = "",u_filter_encroachment_selected = null, u_filter_encroachment_selected = "all"),
+          
+          list("clear","P1","P2","P3","P4"),
+          list(u_filter_encroachment_selected)
+        )
+        '''
+    }
+    {
+      name: "veg~u_filter_encroachment_select"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          options: list("all","P1","P2","P3","P4"),
+          
+          ui_input_suggest(self,"u_filter_encroachment_selected",options)
+        )
+        '''
+    }
+    {
+      name: "veg~u_filter_encroachment_selected"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "veg~u_filter_feeder_formula"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+          or(u_filter_feeder_selected = "",u_filter_feeder_selected = null, u_filter_feeder_selected = "all"),
+          
+          dt_feeder_summary[].feeder,
+          list(u_filter_feeder_selected)
+        )
+        '''
+    }
+    {
+      name: "veg~u_filter_feeder_select"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          options: flatten(list(list("all"),dt_feeder_summary[].feeder)),
+          
+          ui_input_suggest(self,"u_filter_feeder_selected",options)
+        )
+        '''
+    }
+    {
+      name: "veg~u_filter_feeder_selected"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "veg~u_filter_voltage_formula"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+          or(u_filter_voltage_selected = "",u_filter_voltage_selected = null, u_filter_voltage_selected = "all"), 
+          list("0.00kV","12.50kV","13.20kV","21.60kV"),
+          u_filter_voltage_selected = "LV", list("0.00kV"),
+          u_filter_voltage_selected = "HV", list("12.50kV","13.20kV","21.60kV"),
+          list("0.00kV","12.50kV","13.20kV","21.60kV"),
+        )
+        '''
+    }
+    {
+      name: "veg~u_filter_voltage_select"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          options: list("all","LV","HV"),
+          
+          ui_input_suggest(self,"u_filter_voltage_selected",options)
+        )
+        '''
+    }
+    {
+      name: "veg~u_filter_voltage_selected"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "veg~u_filter_year_formula"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+          or(u_filter_year_selected = "",u_filter_year_selected = null, u_filter_year_selected = "all"),
+          
+          range(1948,2030)&"",
+          
+          (range(int(index(text_split(u_filter_year_selected,"-"),0)),int(index(text_split(u_filter_year_selected,"-"),1))+1))&""
+        )
+        '''
+    }
+    {
+      name: "veg~u_filter_year_select"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          options: list("2010-2025","2000-2009","1975-1999","1950-1974"),
+          
+          ui_input_suggest(self,"u_filter_year_selected",options)
+        )
+        '''
+    }
+    {
+      name: "veg~u_filter_year_selected"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "veg~u_growth_rate"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "real"
+      unit: ""
+    }
+    {
+      name: "veg~u_map_veg_section_colours"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        map(
+          "0_0","#E97451",
+          "0_1","#7FFFD4",
+          "1_0","#FFD700",
+          "1_1","#8A2BE2",
+          "2_0","#FF69B4",
+          "2_1","#20B2AA",
+          "3_0","#CD5C5C",
+          "3_1","#40E0D0",
+          "4_0","#6A5ACD",
+          "4_1","#FF4500",
+          "5_0","#DA70D6",
+          "5_1","#00FA9A",
+          "6_0","#DC143C",
+          "6_1","#6495ED",
+          "7_0","#FF6347",
+          "7_1","#00CED1",
+          "8_0","#D2691E",
+          "8_1","#ADFF2F",
+          "9_0","#FF1493",
+          "9_1","#1E90FF",
+        )
+        '''
+    }
+    {
+      name: "veg~u_max_wind_pressure"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "real"
+      unit: "Pa"
+    }
+    {
+      name: "veg~u_pla_results_report"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          props: fetch_analytics_report("oncor~Oncor PLA",dataset_id: "dGwb5XGPlXwR"),
+          
+          broadcast(
+            prop: props,
+            make_immutable_record(
+              "PLAReport",
+              properties: prop
+            )
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_point_cloud_layer_veg"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        filter(
+          Datasets[].PointCloudLayers,
+          Datasets[].PointCloudLayers[].u_is_veg
+         )
+        '''
+    }
+    {
+      name: "veg~u_points_veg"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        broadcast(
+          grid: make_grid(cell_size:500m,cover_point_cloud: true),
+          
+          categorize_volume(
+            polygon_to_volume(grid,false,200m,200m),
+            "model_veg",
+            "veg" 
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_rate_span"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "model().Spans[].u_rate_span"
+    }
+    {
+      name: "veg~u_rate_span_veg_dist"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "real"
+      unit: "cm"
+    }
+    {
+      name: "veg~u_select_analytics_report"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          options: u_analytic_report_list,
+          
+          ui_input_suggest(self,"u_selected_analytics_report",options)
+        )
+        '''
+    }
+    {
+      name: "veg~u_select_base_environment"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          options: Environments[].label,
+          
+          ui_input_suggest(self,"u_selected_base_environment",options)
+        )
+        '''
+    }
+    {
+      name: "veg~u_select_buffer_key_measurement"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          options: list("Worst","All","Buffer1","Buffer2","Buffer3"),
+          
+          ui_input_segmented_control(self, "u_selected_buffer_key_measurement",options)
+        
+        )
+        '''
+    }
+    {
+      name: "veg~u_select_buffer_key_pc_colour"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          options: list("All","Buffer1","Buffer2","Buffer3"),
+          
+          ui_input_segmented_control(self, "u_selected_buffer_key_pc_colour",options)
+        
+        )
+        '''
+    }
+    {
+      name: "veg~u_select_buffer_volume"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "veg~u_select_encroachment_key_body"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          options: list("P1","P2","P3","P4"),
+          
+          ui_input_segmented_control(self, "u_selected_encroachment_key_body",options)
+        
+        )
+        '''
+    }
+    {
+      name: "veg~u_select_encroachment_key_measurement"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          options: list("Worst","All","P1","P2","P3","P4"),
+            
+          ui_input_segmented_control(self, "u_selected_encroachment_key_measurement",options)
+        
+        )
+        '''
+    }
+    {
+      name: "veg~u_select_encroachment_key_pc_colour"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          options: list("All","P1","P2","P3","P4","OH"),
+          
+          ui_input_segmented_control(self, "u_selected_encroachment_key_pc_colour",options)
+        
+        )
+        '''
+    }
+    {
+      name: "veg~u_selected_analytic_server_report"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        find(
+          AnalyticsReports,
+          AnalyticsReports[].title = u_selected_analytics_report
+        )
+        '''
+    }
+    {
+      name: "veg~u_selected_analytics_report"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "veg~u_selected_base_environment"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "veg~u_selected_base_environment_lookup"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        find(
+          Environments,
+          Environments[].label = u_selected_base_environment
+        )
+        '''
+    }
+    {
+      name: "veg~u_selected_buffer_key_measurement"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "veg~u_selected_buffer_key_pc_colour"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "veg~u_selected_buffer_volume"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "veg~u_selected_encroachment_key_body"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "veg~u_selected_encroachment_key_measurement"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "veg~u_selected_encroachment_key_pc_colour"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "veg~u_selected_encroachment_volume"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "veg~u_selected_gis_district"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "veg~u_selected_gis_region"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "veg~u_selected_span"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "index(u_selected_spans,0)"
+    }
+    {
+      name: "veg~u_selected_spans"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        filter(
+          Spans,
+          Spans[].selected
+        )
+        '''
+    }
+    {
+      name: "veg~u_selected_tree_zone"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "veg~u_selected_tree_zone2"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "veg~u_show_buffer_measurements"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "boolean"
+    }
+    {
+      name: "veg~u_show_buffer_volume"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "boolean"
+    }
+    {
+      name: "veg~u_show_encroachment_bodies"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "boolean"
+    }
+    {
+      name: "veg~u_show_encroachment_diagram"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "boolean"
+    }
+    {
+      name: "veg~u_show_encroachment_measurements"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "boolean"
+    }
+    {
+      name: "veg~u_show_encroachment_volume"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "boolean"
+    }
+    {
+      name: "veg~u_show_fall_in_arcs"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "boolean"
+    }
+    {
+      name: "veg~u_show_overstory_details"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "boolean"
+    }
+    {
+      name: "veg~u_show_pc_for_only_gis_spans"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "boolean"
+    }
+    {
+      name: "veg~u_show_radial_buffer_body"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "boolean"
+    }
+    {
+      name: "veg~u_show_tree_zone_violations"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "boolean"
+    }
+    {
+      name: "veg~u_show_tree_zones"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "boolean"
+    }
+    {
+      name: "veg~u_show_veg_pc_colouring_buffer"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "boolean"
+    }
+    {
+      name: "veg~u_show_veg_pc_colouring_encroachments"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "boolean"
+    }
+    {
+      name: "veg~u_show_wind_direction"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "boolean"
+    }
+    {
+      name: "veg~u_show_wind_sweep_body"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "boolean"
+    }
+    {
+      name: "veg~u_span_encroachments"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "Spans[].u_span_veg_sections"
+    }
+    {
+      name: "veg~u_span_veg_sections_delta"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "model().Spans[].u_veg_section_delta"
+    }
+    {
+      name: "veg~u_temperature"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "real"
+      unit: "fahrenheit"
+    }
+    {
+      name: "veg~u_tree_health_map"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: ""
+    }
+    {
+      name: "veg~u_trees"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        if(
+          len(model().dt_trees) > 0,
+          broadcast(
+            tree: model().dt_trees,
+            make_immutable_record(
+              "Trees",
+              tree: tree
+            )   
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_trees_satellite"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        if(
+          len(model().dt_trees) > 0,
+          broadcast(
+            tree: model().dt_trees,
+            make_immutable_record(
+              "TreesSatellite",
+              tree: tree
+            )   
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_trimmed_feeders"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        dt_trimmed_feeders[].feeder_number&""
+        '''
+    }
+    {
+      name: "veg~u_veg_analytics_report_ench"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        find(
+          AnalyticsReports,
+          AnalyticsReports[].title = "Span Encroachment"
+        )
+        '''
+    }
+    {
+      name: "veg~u_veg_analytics_report_fir"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        find(
+          AnalyticsReports,
+          AnalyticsReports[].title = "Fall-in Risk"
+        )
+        '''
+    }
+    {
+      name: "veg~u_veg_analytics_report_fir_no_ench"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        find(AnalyticsReports, AnalyticsReports[].title = "Fall-in w/o Encroachment")
+        '''
+    }
+    {
+      name: "veg~u_veg_clearance_rules_read_ony"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        broadcast(
+          rule: veg_clearance_rules,
+          
+          make_immutable_record(
+            "ClearanceRulesRead",   
+              index: rule.index,
+              conductor_key: rule.conductor_key,
+              span_length_lower_limit: rule.span_length_lower_limit,
+              span_length_upper_limit: rule.span_length_upper_limit,      
+              
+              clearance_radial_ends: rule.clearance_radial_ends,
+              clearance_radial_middle: rule.clearance_radial_middle,
+              clearance_above: rule.clearance_above,
+              clearance_below: rule.clearance_below,
+              bushfire_factor: rule.bushfire_factor,   
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_veg_sections"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "model().SpanStacks[].u_bay_sections[].veg_sections"
+    }
+    {
+      name: "veg~u_veg_sections_partitioned"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "u_veg_sections[].points_veg_partitioned_by_dataset"
+    }
+    {
+      name: "veg~u_wind_pressure"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "real"
+      unit: "Pa"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  id: "7a4bd6ebf5f7aa95d2ffa37"
+  key: "veg~encroachment_classification"
+  token: "i"
+  type: "18b85634c41cc9ac38863"
+  type_key: "veg~SetUpDefectClassifications"
+  data:
+    '''
+    priority,encroachment_key,lower_limit,upper_limit,description,color,point_cloud_class,buffer_zone,buffer_increment
+    1,P1,0.75,1.00,Enchroaching within the min veg clearance by 75% or more,#eb4034,50,False,0.00
+    2,P2,0.50,0.75,Enchroaching within the min veg clearance between 50% & 75%,#f5a614,51,False,0.00
+    3,P3,0.25,0.50,Enchroaching within the min veg clearance between 25% & 50%,#ddf731,52,False,0.00
+    4,P4,0.00,0.25,Enchroaching within the min veg clearance by up to 25%,#12fffb,53,False,0.50
+    '''
+}

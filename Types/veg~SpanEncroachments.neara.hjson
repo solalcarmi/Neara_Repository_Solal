@@ -1,0 +1,196 @@
+{
+  token: "veg~ct_SpanEncroachments"
+  is_custom_class: true
+  fields: [
+    {
+      name: "cables"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "span.u_veg_environment.Cables"
+    }
+    {
+      name: "conductor_key"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "span.section.u_conductor_key"
+    }
+    {
+      name: "distance_to_veg"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "measure_distance(cables,points_veg)"
+    }
+    {
+      name: "encroachment_key"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        if(
+          intersect_points(points_veg,span.u_veg_environment.u_p1_points).num_points > 0, "P1",
+          intersect_points(points_veg,span.u_veg_environment.u_p2_points).num_points > 0, "P2",
+          intersect_points(points_veg,span.u_veg_environment.u_p3_points).num_points > 0, "P3",
+          intersect_points(points_veg,span.u_veg_environment.u_p4_points).num_points > 0, "P4",
+          
+        )
+        '''
+    }
+    {
+      name: "geom"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "veg_section.geom"
+    }
+    {
+      name: "gis_layer"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "span.u_gis_layer"
+    }
+    {
+      name: "length"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "span.length"
+    }
+    {
+      name: "oh_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        intersect_points(
+          points_veg,
+          span.u_veg_environment.u_points_oh_veg,
+          "oh_veg",
+        )
+        '''
+    }
+    {
+      name: "points_veg"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "veg_section.points_veg"
+    }
+    {
+      name: "points_veg_buffer"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        intersect_points(points_veg,span.u_veg_environment.u_buffer_points,"veg_buffer")
+        '''
+    }
+    {
+      name: "points_veg_prune"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        intersect_points(points_veg,span.u_veg_environment.u_prune_points,"veg_prune")
+        '''
+    }
+    {
+      name: "pole1"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "span.stack.global_pole1"
+    }
+    {
+      name: "pole2"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "span.stack.global_pole2"
+    }
+    {
+      name: "report_global_id"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        veg_section.report_global_id&"_"&span.id
+        '''
+    }
+    {
+      name: "span"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "index(model().Spans,-1)"
+    }
+    {
+      name: "veg_section"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "index(model().u_veg_sections,-1)"
+    }
+    {
+      name: "viz_clearance"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        let(
+          color: try(map_lookup(model().u_encroachment_colour_map,encroachment_key),"white"),
+          
+          viz(list(
+            viz("style", color&" width:0.05 solid",
+              list(
+              viz("line",distance_to_veg.start,distance_to_veg.end)
+                )
+              ),
+            viz("style", "blue bg_color:white font_size:15",
+              list(
+              viz("text",distance_to_veg.start + (distance_to_veg.end - distance_to_veg.start)*0.5,
+                text_unit(distance_to_veg.distance,"m",2) & "\n" &
+                encroachment_key
+                 ))
+              ),
+        
+          ))
+        )
+        '''
+    }
+    {
+      name: "voltage"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "span.u_voltage"
+    }
+  ]
+}

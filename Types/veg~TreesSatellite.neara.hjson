@@ -1,0 +1,55 @@
+{
+  token: "veg~ct_TreesSatellite"
+  is_custom_class: true
+  fields: [
+    {
+      name: "geom"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "geo_point(get_centroid(tree.geometry))"
+    }
+    {
+      name: "report_global_id"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "tree.veg_item"
+    }
+    {
+      name: "tree"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "index(model().dt_trees,-1)"
+    }
+    {
+      name: "tree_health_index"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        find(
+          model().dt_tree_health_index[].meaning,
+          model().dt_tree_health_index[].index = tree_health_index_key
+        )
+        '''
+    }
+    {
+      name: "tree_health_index_key"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        regex_replace("^.*(?=.$)", tree.veg_item, "")
+        '''
+    }
+  ]
+}

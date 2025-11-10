@@ -1,0 +1,264 @@
+{
+  id: "747a3a6353777831a8f88192"
+  key: "veg~Veg Reports"
+  name_prefix: "Veg/"
+  variables: [
+    {
+      name: "NETWORK_MODEL"
+      title: ""
+      type: {
+        kind: "dataset"
+        dataset: {
+          type: "model"
+        }
+      }
+      value: "dNKHFLxsSeZR"
+      featured: true
+    }
+    {
+      name: "POINTCLOUD"
+      title: ""
+      type: {
+        kind: "dataset"
+        dataset: {
+          type: "point_cloud"
+        }
+      }
+      value: "dDfYFWEIAYcb"
+      featured: true
+    }
+    {
+      name: "TREE_SEG"
+      title: ""
+      type: {
+        kind: "dataset"
+        dataset: {
+          type: "geo_data"
+        }
+      }
+      value: "dA38dHKqiCWx"
+      featured: true
+    }
+    {
+      name: "TREE_SAT"
+      title: ""
+      type: {
+        kind: "dataset"
+        dataset: {
+          type: "geo_data"
+        }
+      }
+      value: "d0grUIEPDm9c"
+      featured: true
+    }
+    {
+      name: "ROADS"
+      title: ""
+      type: {
+        kind: "dataset"
+        dataset: {
+          type: "geo_data"
+        }
+      }
+      value: "dFobcrTHBnxd"
+      featured: true
+    }
+    {
+      name: "TRIM"
+      title: ""
+      type: {
+        kind: "dataset"
+        dataset: {
+          type: "geo_data"
+        }
+      }
+      value: "dyNCekFn8qE7"
+      featured: true
+    }
+    {
+      name: "PARCELS"
+      title: ""
+      type: {
+        kind: "dataset"
+        dataset: {
+          type: "geo_data"
+        }
+      }
+      value: "dws4y7VqtHLx"
+      featured: true
+    }
+    {
+      name: "DATASET_KEY"
+      title: ""
+      type: {
+        kind: "text"
+        text: {}
+      }
+      value: "Batch1_demo"
+      featured: true
+    }
+  ]
+  stages: [
+    {
+      action: "process"
+      title: "Veg Reports"
+      explicit_dataset_id: ""
+      match_by_name: true
+      dataset_name_suffix: "Reports/%DATASET_KEY%"
+      dataset_type: "analytics"
+      text_config:
+        '''
+        {
+          "simulationType": "REPORT",
+          "templateDesignId": "%PROJECT_ID%",
+          "datasets": [
+            {
+              "datasetId": "%NETWORK_MODEL%",
+              "gridGeometrySource": true,
+              "gridDataSource": true,
+              "config": {
+                "type": "automod"
+              }
+            },
+            {
+              "datasetId": "%POINTCLOUD%",
+              "gridGeometrySource": true,
+              "gridDataSource": false,
+              "config": {
+                "type": "pointcloud"
+              }
+            },
+            {
+              "datasetId": "%TREE_SEG%",
+              "gridGeometrySource": false,
+              "gridDataSource": false,
+              "config": {
+                "type": "gis"
+              }
+            },
+            {
+              "datasetId": "%TREE_SAT%",
+              "gridGeometrySource": false,
+              "gridDataSource": false,
+              "config": {
+                "type": "gis"
+              }
+            },
+            {
+              "datasetId": "%ROADS%",
+              "gridGeometrySource": false,
+              "gridDataSource": false,
+              "config": {
+                "type": "gis"
+              }
+            },
+            {
+              "datasetId": "%TRIM%",
+              "gridGeometrySource": false,
+              "gridDataSource": false,
+              "config": {
+                "type": "gis"
+              }
+            },
+            {
+              "datasetId": "%PARCELS%",
+              "gridGeometrySource": false,
+              "gridDataSource": false,
+              "config": {
+                "type": "gis"
+              }
+            }
+          ],
+          "reports": [
+            {
+              "reportName": "veg~Span"
+            },
+            {
+              "reportName": "veg~Tree"
+            }
+          ],
+          "pointcloudDensities": {
+            "ground": 0,
+            "ground2": -1,
+            "water": -1,
+            "road": -1,
+            "veg": 2,
+            "building": 2,
+            "fence": 2,
+            "vehicle": -1,
+            "electrical": -1,
+            "railway": -1,
+            "pipeline": -1,
+            "special": -1,
+            "noise": -1,
+            "stays": -1,
+            "tower": -1,
+            "structure": 1,
+            "cond": 1
+          },
+          "pointCloudLoadConfig": {
+            "coverCell": true,
+            "coverModel": false
+          },
+          "geoGridConfig": {
+            "cellMinSize": 500,
+            "cellMaxSize": 4000,
+            "cellMaxObjectCount": 600
+          },
+          "geoDataLoadConfig": {
+            "coverCell": true,
+            "coverModel": false
+          }
+        }
+        '''
+      dataset_key: ""
+      enabled: true
+      sync_source: ""
+      sync_destination: ""
+      instructions: ""
+      config: null
+      source_preset_id: null
+      shared_with: "super_admin"
+    }
+  ]
+  cell_filter: {
+    enabled: false
+    filter: {
+      type: "geometry"
+      geometry: {
+        geometries: [
+          {
+            type: "polygon"
+            polygon: {
+              coordinates: [
+                [
+                  [
+                    -102.78929112725284
+                    32.20777208125872
+                  ]
+                  [
+                    -102.78105138115909
+                    31.870177708911076
+                  ]
+                  [
+                    -102.34434483819034
+                    31.881839598471995
+                  ]
+                  [
+                    -102.35807774834659
+                    32.200799992903995
+                  ]
+                  [
+                    -102.78929112725284
+                    32.20777208125872
+                  ]
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+  type: "custom"
+}

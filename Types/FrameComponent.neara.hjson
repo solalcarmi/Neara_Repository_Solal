@@ -1,0 +1,17 @@
+{
+  token: "FrameComponent"
+  is_custom_class: false
+  fields: [
+    {
+      name: "veg~u_veg_auto_qa_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        get_points("veg_qa",position,1.5m,"veg")
+        '''
+    }
+  ]
+}

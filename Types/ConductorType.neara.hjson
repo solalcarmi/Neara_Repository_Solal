@@ -1,0 +1,25 @@
+{
+  token: "ConductorType"
+  is_custom_class: false
+  fields: [
+    {
+      name: "veg~u_cond_label"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        label&""
+        '''
+    }
+    {
+      name: "veg~u_veg_management_cond_type"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "text"
+    }
+  ]
+}

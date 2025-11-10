@@ -1,0 +1,466 @@
+{
+  token: "ConductorSpanEnvironment"
+  is_custom_class: false
+  fields: [
+    {
+      name: "veg~u_buffer1_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        exclude_points(
+          categorize_volume(u_volume_buffer1,"veg_b1","veg"),
+          combine_points(list(span.u_points_cvv,u_p_points)),
+          "veg_b1"
+        )
+        '''
+    }
+    {
+      name: "veg~u_buffer2_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        exclude_points(
+          categorize_volume(u_volume_buffer2,"veg_b2","veg"),
+          combine_points(list(span.u_points_cvv,u_p_points,u_buffer1_points)),
+          "veg_b2"
+        )
+        '''
+    }
+    {
+      name: "veg~u_buffer3_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        exclude_points(
+          categorize_volume(u_volume_buffer3,"veg_b3","veg"),
+          combine_points(list(span.u_points_cvv,u_p_points,u_buffer1_points,u_buffer2_points)),
+          "veg_b3"
+        )
+        '''
+    }
+    {
+      name: "veg~u_buffer_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        combine_points(list(u_buffer1_points,u_buffer2_points,u_buffer3_points),"veg_buffer")
+        '''
+    }
+    {
+      name: "veg~u_encroachment_key"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        if(
+          u_p1_points.num_points > 0, "P1",
+          u_p2_points.num_points > 0, "P2",
+          u_p3_points.num_points > 0, "P3",
+          u_p4_points.num_points > 0, "P4",
+        )
+        '''
+    }
+    {
+      name: "veg~u_encroachment_location"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        reproject(
+          vec2(u_veg_dist.end),
+          from_srid: model().srid,
+          to_srid: "4326"
+        )
+        '''
+    }
+    {
+      name: "veg~u_encroachment_prio"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        if(
+          u_encroachment_key,
+          
+          find(
+            model().encroachment_classification[].priority,
+            model().encroachment_classification[].encroachment_key = u_encroachment_key
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_location_defect_in_span"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        if(
+          u_veg_dist = null, null,
+          or(
+            (vec2(u_veg_dist.start) - span.pole1.location).norm < span.length*1/6, 
+            (vec2(u_veg_dist.start) - span.pole1.location).norm < span.length*1/6, 
+          ),   
+          "first or last 1/6",
+          "middle 2/3rd"
+        )
+        '''
+    }
+    {
+      name: "veg~u_p1_body"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          radius: span.u_required_clearance*0.25,
+          color: find(model().encroachment_classification[].color,model().encroachment_classification[].encroachment_key = "P1"),
+          
+          make_radial_body(Cables,radius: radius,color: color&"90")
+        )
+        '''
+    }
+    {
+      name: "veg~u_p1_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          label: "veg_p1",
+          req_clear: span.u_required_clearance*0.25,
+        
+          exclude_points(
+            get_points(label,Cables,req_clear,"veg"),
+            combine_points(list(span.stack.u_veg_auto_qa_points)),
+            label
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_p2_body"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          radius: span.u_required_clearance*0.5,
+          color: find(model().encroachment_classification[].color,model().encroachment_classification[].encroachment_key = "P2"),
+          
+          make_radial_body(Cables,radius: radius,color: color&"90")
+        )
+        '''
+    }
+    {
+      name: "veg~u_p2_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          label: "veg_p2",
+          req_clear: span.u_required_clearance*0.5,
+        
+          exclude_points(
+            get_points(label,Cables,req_clear,"veg"),
+            combine_points(list(span.stack.u_veg_auto_qa_points,u_p1_points)),
+            label
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_p3_body"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          radius: span.u_required_clearance*0.75,
+          color: find(model().encroachment_classification[].color,model().encroachment_classification[].encroachment_key = "P3"),
+          
+          make_radial_body(Cables,radius: radius,color: color&"90")
+        )
+        '''
+    }
+    {
+      name: "veg~u_p3_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          label: "veg_p3",
+          req_clear: span.u_required_clearance*0.75,
+        
+          exclude_points(
+            get_points(label,Cables,req_clear,"veg"),
+            combine_points(list(span.stack.u_veg_auto_qa_points,u_p1_points,u_p2_points)),
+            label
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_p4_body"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          radius: span.u_required_clearance*1,
+          color: find(model().encroachment_classification[].color,model().encroachment_classification[].encroachment_key = "P4"),
+          
+          make_radial_body(Cables,radius: radius,color: color&"90")
+        )
+        '''
+    }
+    {
+      name: "veg~u_p4_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          label: "veg_p4",
+          req_clear: span.u_required_clearance*1,
+        
+          exclude_points(
+            get_points(label,Cables,req_clear,"veg"),
+            combine_points(list(span.stack.u_veg_auto_qa_points,u_p1_points,u_p2_points,u_p3_points)),
+            label
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_p_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        combine_points(list(u_p1_points,u_p2_points,u_p3_points,u_p4_points),"veg_vp")
+        '''
+    }
+    {
+      name: "veg~u_points_ab_veg"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          offet: 0.25m, // horizontal offset
+          
+          categorize_volume(make_rectangular_volume(Cables,offet,100m,0,1),"veg_ab","veg")
+        )
+        //points directly above/below span
+        '''
+    }
+    {
+      name: "veg~u_points_oh_veg"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          volume: make_clear_to_sky_volume(Cables,0.25m,200m),
+          exclude_points(
+            categorize_volume(volume,"veg_oh","veg"),
+            span.u_points_cvv,
+            "veg_oh"
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_prune_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        combine_points(list(
+          u_p1_points,
+          u_p2_points,
+          u_p3_points,
+          u_p4_points
+        ))
+        '''
+    }
+    {
+      name: "veg~u_rate_span_criteria_veg_dist"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        if(
+          u_veg_dist = null, false,
+          
+          u_veg_dist.distance >= model().u_rate_span_veg_dist
+        )
+        '''
+    }
+    {
+      name: "veg~u_veg_dist"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "measure_distance(Cables,u_veg_points)"
+    }
+    {
+      name: "veg~u_veg_loc"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          enc_points: u_veg_points,
+          
+          if(
+            enc_points.num_points > 0,
+          
+            let(
+              dist: measure_distance(Cables,enc_points),
+              span_extent: intersect_points(enc_points,span.u_veg_environment.u_points_ab_veg).num_points > 0,
+              
+              if(
+                not(span_extent), "side",
+                and(span_extent, dist.end.z > dist.start.z), "over-head",
+                and(span_extent, dist.end.z < dist.start.z), "under-growth"
+              )
+            )
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_veg_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "u_prune_points"
+    }
+    {
+      name: "veg~u_volume_buffer1"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          req_clearance: span.u_required_clearance + try(model().u_buffer_zone_increment, 0.5m)*1,  
+          combine_volume(
+            list(  
+                //horizontal and below span volume
+              make_rectangular_volume(Cables,req_clearance,req_clearance,0,1),
+               
+                //clear to sky volume:
+              make_clear_to_sky_volume(Cables,req_clearance,100m)
+            )
+          )
+        )
+        
+        /*
+        '''
+    }
+    {
+      name: "veg~u_volume_buffer2"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          req_clearance: span.u_required_clearance + try(model().u_buffer_zone_increment, 0.5m)*2,
+          combine_volume(
+            list(  
+                //horizontal and below span volume
+              make_rectangular_volume(Cables,req_clearance,req_clearance,0,1),
+               
+                //clear to sky volume:
+              make_clear_to_sky_volume(Cables,req_clearance,100m)
+            )
+          )
+        )
+        
+        /*
+        '''
+    }
+    {
+      name: "veg~u_volume_buffer3"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          req_clearance: span.u_required_clearance + try(model().u_buffer_zone_increment, 0.5m)*3,
+          combine_volume(
+            list(  
+                //horizontal and below span volume
+              make_rectangular_volume(Cables,req_clearance,req_clearance,0,1),
+               
+                //clear to sky volume:
+              make_clear_to_sky_volume(Cables,req_clearance,100m)
+            )
+          )
+        )
+        
+        /*
+        '''
+    }
+  ]
+}

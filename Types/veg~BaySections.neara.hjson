@@ -1,0 +1,89 @@
+{
+  token: "veg~ct_BaySections"
+  is_custom_class: true
+  fields: [
+    {
+      name: "end"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "vec2(0,0)*1m + vec2(origin())"
+    }
+    {
+      name: "index"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "index_of(span_stack.u_bay_sections,self)"
+    }
+    {
+      name: "span_stack"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "index(model().SpanStacks,-1)"
+    }
+    {
+      name: "start"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "vec2(0,0)*1m + vec2(origin())"
+    }
+    {
+      name: "veg_sections"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          perpVec: span_stack.u_perp_vec,
+          width: span_stack.u_bay_easement_width,
+        
+          let(
+          //below returns list(2). 1 Section on each side of bay
+            sections:  
+          list(
+              geo_polygon(
+                list(list(
+                  start,
+                  start + perpVec*width,
+                  end + perpVec*width,
+                  end,
+                  start,
+                ))
+              ), 
+              geo_polygon(
+                list(list(
+                  start,
+                  start - perpVec*width,
+                  end - perpVec*width,
+                  end,
+                  start,
+                ))
+              ) 
+            ),
+        
+          //below populates the BayVegSections CDT with each all sections
+        
+            broadcast(
+              section: sections,
+              make_immutable_record(
+                "BayVegSections",
+                geom: not_null(section),
+                span_stack: not_null(span_stack),
+                bay_section: not_null(self),
+              )
+            )
+          )
+        )
+        '''
+    }
+  ]
+}

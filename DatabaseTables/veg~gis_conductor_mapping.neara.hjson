@@ -1,0 +1,598 @@
+{
+  id: "f3a1fe2d4b94f0eb46e7a3"
+  key: "veg~gis_conductor_mapping"
+  token: "j"
+  type: "1e75478c21db12e619ae67c"
+  type_key: "veg~SetUpGisConductorMapping"
+  data:
+    '''
+    gis_known_as,library_label
+    100 HDCU3,19/2.57 HDCU
+    105 AAC3,Wasp (7/4.39 AAC)
+    105 ACSR/GZ2,Cherry (6/4.75 + 7/1.60 ACSR/GZ)
+    105 ACSR/GZ3,Cherry (6/4.75 + 7/1.60 ACSR/GZ)
+    105 acsr/gz4,Cherry (6/4.75 + 7/1.60 ACSR/GZ)
+    106 AAC3,Wasp (7/.173 AAC)
+    106 aac4,Wasp (7/.173 AAC)
+    106 AAC6 / 2 COND/PH,Twin Wasp (7/.173 AAC)
+    107 AAC2,Generic I
+    107 AAC2 + 111 AAC1,2xWasp ++ 1xMercury
+    110 aac1,Wasp (7/.173 AAC)
+    110 aac2,Wasp (7/.173 AAC)
+    110 AAC3 + 111 AAC1,Generic I
+    110 AAC3 + 40 HDCU1,Generic I
+    110 aac4,Wasp (7/4.39 AAC)
+    110 AAC4 + 98 HDCU3 + 66 HDCU1,Generic I
+    110 AAC6,Wasp (7/.173 AAC)
+    110 aac7,Wasp (7/.173 AAC)
+    110 aac8,Wasp (7/.173 AAC)
+    111 AAAC3,Generic I
+    111 AAC1,Mercury (7/4.50 AAC)
+    111 AAC2,Mercury (7/4.50 AAC)
+    111 AAC2 + 110 AAC2,2xMercury ++ 2xWasp
+    111 AAC3,Mercury (7/4.50 AAC)
+    111 AAC3 + 15 HDCU1,Generic I
+    111 AAC3 + 50 AAC1,Generic I
+    111 aac4,Mercury (7/4.50 AAC)
+    111 AAC4 + 110 AAC4,4xMercury ++ 4xWasp
+    111 AAC4 + 15 AAC1,Generic I
+    111 aac7,Mercury (7/4.50 AAC)
+    111 AAC8,Mercury (7/4.50 AAC)
+    114 HDCU3,Generic I
+    114 HDCU4,Generic I
+    119 AAAC3,Generic I
+    119 AAAC4,Generic I
+    11KV 120 AAC3 XQ CU(WS) YQ / CAT / COM / ABC,HV ABC 120
+    11KV 124 AAAC1 XQ / CCT120,CCT120 (11kV)
+    11KV 124 AAAC1 XQ / CCT120 / #100%MMC,(Legacy) CCT120 (11kV)
+    11KV 124 AAAC1 XQ YQ / CCT120 / MMO 50/50 / 2 CABLE,CCT120 (11kV)
+    11KV 124 AAAC1 XQ YQ / CCT120 / MMO 50/50 / 3 CABLES,CCT120 (11kV)
+    11KV 124 AAAC1 XQ YQ / CCT120 / MMO 60/40,CCT120 (11kV)
+    11KV 124 AAAC3 XQ / CCT120 / 50/50% MMO,CCT120 (11kV)
+    11KV 15 HDCU3 Z / SINGLES,Generic I
+    11KV 183 AAAC1 XQ / CCT180,(Legacy) CCT180 (11kV)
+    11KV 183 AAAC1 XQ YQ / CCT180,CCT180 (11kV)
+    11KV 35 AAC3 XQ 23 CU(WS) YQ / CAT / COM / ABC,HV ABC 35
+    11KV 35 AAC3 XQ CU(WS) YQ / CAT / COM / ABC,HV ABC 35
+    11KV 77 AAAC1 XQ YQ / CCT80 / 60/40% MMO,(Legacy) CCT80 (11kV)
+    11KV 77 AAAC1 XQ YQ / CCT80 / 60/40%MMO,(Legacy) CCT80 (11kV)
+    11KV 77 AAAC2 XQ / CC80,Generic I
+    11KV 77 AAAC2 XQ YQ / CCT80,CCT80 (11kV)
+    11KV 77 AAAC3 XQ / CC80,Generic I
+    11KV 77 AAAC3 XQ YQ / CCT80,CCT80 (11kV)
+    11KV 77 AAAC6 XQ YQ / CCT80,CCT80 (11kV)
+    124 AAAC3,Iodine (7/4.75 AAC)
+    124 AAC3,Generic I
+    128 CDCU3,Generic I
+    129 HDCU3,19/2.95 HDCU
+    129 HDCU3 + 65 HDCU1,Generic I
+    130 HDCU4,19/.116 HDCU (130 HDCU)
+    130 HDCU6 / 2 COND/PH,Generic I
+    132 HDCU3,Generic I
+    14 ACSR/GZ2,Generic I
+    14 ACSR/GZ3,Generic I
+    14.521 HDCU2,7/1.63 HDCU
+    14.528 HDCU2 + 24 HDCU1,Generic I
+    144 ACSR/GZ3,Generic I
+    15 AAC1,Generic I
+    15 GZ2,7/.064 SC/GZ
+    15 GZ3,7/.064 SC/GZ (15 SC/GZ)
+    15 hdcu1,7/1.63 HDCU
+    15 HDCU1 + 17 HDCU2,Generic I
+    15 HDCU1 + 22 HDCU1,Generic I
+    15 HDCU1 + 22 HDCU1 + 19 AAC1,Generic I
+    15 HDCU1 + 22 HDCU1 + 7 HDCU1,Generic I
+    15 hdcu1 + 22 hdcu2,1x15 HDCU ++ 2x22 HDCU
+    15 hdcu1 + 22 hdcu3,3x22 HDCU ++ 1x15 HDCU
+    15 hdcu2,7/1.63 HDCU
+    15 HDCU2 + 19 AAC1,1x7 HDCU ++ 1x19 AAC
+    15 hdcu2 + 22 hdcu2,Generic I
+    15 HDCU3,7/1.63 HDCU
+    15 hdcu3 + 22 hdcu1,Generic I
+    15 HDCU3 + 22 HDCU1 + 40 HDCU4,Generic I
+    15 HDCU3 + 22 HDCU2 + 40 HDCU3,Generic I
+    15 HDCU3 + 22 HDCU2 + 66 HDCU2 + 40 HDCU1,Generic I
+    15 HDCU3 + 40 HDCU1,Generic I
+    15 HDCU3 + 66 HDCU4 + 22 HDCU1,Generic I
+    15 HDCU3 + 7 HDCU1,3x15 HDCU ++ 1x7 HDCU
+    15 hdcu4,7/1.63 HDCU
+    15 HDCU4 + 66 HDCU4,Generic I
+    15 HDCU6 + 7 HDCU2,Generic I
+    150 AAC3 XQ YQ / ABC,HV ABC 150
+    157 AAC3,Neptune (19/3.25 AAC)
+    157 aac4,Neptune (19/3.25 AAC)
+    158 AAAC1,Krypton (19/3.25 AAAC)
+    158 AAC3,Neptune (19/3.25 AAC)
+    158 AAC4 + 66 HDCU4,Generic I
+    158 AAC6 / 2 COND/PH,Twin Neptune (19/3.25 AAC)
+    158 ACSR/GZ3,Wolf (30/7/2.59 ACSR/GZ)
+    16 GZ2 + 24 HDCU1,Generic I
+    16 hdcu2,7/1.75 HDCU (16 HDCU)
+    16 hdcu4,7/1.75 HDCU (16 HDCU)
+    160 aac4,Neptune (19/3.25 AAC)
+    160 AAC4 + 110 AAC2,4xNeptune ++ 2xWasp
+    17 ACSR/GZ2,Generic I
+    17 ACSR/GZ3,Generic I
+    17 HDCU1 + 22 HDCU2 + 38 HDCU1,Generic I
+    17 HDCU2,7/1.75 HDCU (17 HDCU)
+    17 HDCU3,7/1.75 HDCU (17 HDCU)
+    18 ACSR/GZ1,Generic I
+    18 ACSR/GZ2,Raisin (3/4/2.50 ACSR/GZ)
+    18 ACSR/GZ3,Raisin (3/4/2.50 ACSR/GZ)
+    18 CDCU2,Generic I
+    18 SC/AC3,3/2.75 SC/GZ
+    18 SC/GZ1,3/2.75 SC/GZ
+    18 SC/GZ2,3/2.75 SC/GZ
+    18 SC/GZ3,3/2.75 SC/GZ
+    181 AAAC3,Generic I
+    19 AAC1,Thrip (7/1.88 AAC)
+    19 AAC1 + 22 HDCU2,Generic I
+    19 AAC1 + 7 HDCU1,Generic I
+    19 AAC1 + 7 HDCU2,Generic I
+    19 aac2,Thrip (7/1.88 AAC)
+    19 AAC2 + 7 HDCU1,Generic I
+    19 aac3,Thrip (7/1.88 AAC)
+    19 aac4,Thrip (7/1.88 AAC)
+    194 HDCU3,37/2.62 HDCU
+    199 HDCU1,37/2.62 HDCU
+    202 HDCU1,37/2.64 HDCU
+    207 ACSR/GZ3,Lemon (30/7/3.00 ACSR/GZ)
+    210 AAC2,Pluto (19/3.75 AAC)
+    210 AAC3,Pluto (19/3.75 AAC)
+    210 aac4,Pluto (19/3.75 AAC)
+    210 AAC6 / 2 COND/PH,Twin Pluto (19/3.75 AAC)
+    214 aac4,Chafer (19/.149 AAC)
+    215 AAC3,Chafer (19/3.78 AAC)
+    217 AAC3,Chafer (19/.149 AAC)
+    22 CDCU2,19/2.00 CDCU
+    22 CDCU3,19/2.00 CDCU
+    22 GZ3,Generic I
+    22 hdcu1,7/2.00 HDCU
+    22 hdcu1 + 38 hdcu3,1x22 HDCU ++ 3x38 HDCU
+    22 hdcu2,7/2.00 HDCU
+    22 hdcu2 + 26 hdcu1,Generic I
+    22 HDCU2 + 38 HDCU2,Generic I
+    22 HDCU2 + 40 HDCU2,Generic I
+    22 HDCU2 + 40 HDCU2 + 66 HDCU4,Generic I
+    22 hdcu2 + 65 hdcu1,Generic I
+    22 HDCU3,7/2.00 HDCU
+    22 HDCU3 + 110 AAC4 + 15 HDCU1,Generic I
+    22 HDCU3 + 110 AAC4 + 40 HDCU1,Generic I
+    22 HDCU3 + 38 HDCU1,Generic I
+    22 HDCU3 + 40 HDCU1 + 15 HDCU1,Generic I
+    22 HDCU3 + 40 HDCU4,Generic I
+    22 HDCU3 + 60 HDCU4,Generic I
+    22 HDCU3 + 66 HDCU1 + 15 HDCU1,Generic I
+    22 HDCU3 + 66 HDCU1 + 40 HDCU1,Generic I
+    22 HDCU3 + 66 HDCU3 + 40 HDCU1,Generic I
+    22 HDCU3 + 66 HDCU4,Generic I
+    22 HDCU3 + 66 HDCU4 + 15 HDCU1,3x22 HDCU ++ 4x66 HDCU ++ 1x15 HDCU
+    22 hdcu3 + 66 hdcu4 + 40 hdcu1,3x22 HDCU ++ 4x66 HDCU ++ 1x40 HDCU
+    22 HDCU3 + 66 HDCU5,Generic I
+    22 HDCU3 + 7 HDCU1,3x22 HDCU ++ 1x7 HDCU
+    22 hdcu4,7/2.00 HDCU
+    22 HDCU4 + 106 AAC3,Generic I
+    22 hdcu4 + 110 aac4,Generic I
+    22 HDCU4 + 15 HDCU1,Generic I
+    22 HDCU4 + 40 HDCU4,Generic I
+    22 hdcu4 + 66 hdcu1,Generic I
+    22 hdcu4 + 66 hdcu3 + 15 hdcu1,Generic I
+    22 HDCU4 + 66 HDCU4,4x22 HDCU ++ 4x66 HDCU
+    22 HDCU5 + 40 HDCU1,7/2.00 HDCU
+    22 hdcu7,7/2.00 HDCU
+    22 HDCU7 + 66 HDCU1,Generic I
+    220 HDCU3,37/2.75 HDCU (220 HDCU)
+    23 CDCU3,Generic I
+    23 HDCU3,7/2.03 HDCU
+    23 HDCU3 + 15 HDCU1 + 66 HDCU1 + 110 AAC4,Generic I
+    23 hdcu3 + 40 hdcu1,3x23 HDCU ++ 1x40 HDCU
+    23 HDCU3 + 66 HDCU1,3x23 HDCU ++ 1x66 HDCU
+    23 SC/GZ3,Generic I
+    235 AAAC3,Generic I
+    240v 10 hdcu2 xq / t,10 T2 - Twisted Twin
+    240v 15 cu2 z z,Generic I
+    240v 16 cu2 z z,7/1.70 PVC (2-Core)
+    240v 16 hdcu2 xq / t,16 T2 - Twisted Twin
+    240v 25 aac 2 xq / abc,Generic I
+    240v 25 aac2 xq / abc,25 AL2 LVABC
+    240V 35 HDCU2 Z Z,Generic I
+    240v 38 hdcu2 z / t,Twin 7/2.64 PVC (1-Core)
+    240v 6 hdcu2 z z / fig.8,7/1.04 PVC (2-Core)
+    240v 7 hdcu2 z z / fig 8,7/1.118 (7/.044) 2-CORE PVC
+    240v 95 aac2 xq / abc,95 AL2 LVABC
+    25 HDCU2,Generic I
+    25 HDCU2 + 111 AAC1,Generic I
+    25 HDCU3,Generic I
+    26 ACSR/GZ2,Gopher (6/1/2.36 ACSR/GZ)
+    26 ACSR/GZ3,Gopher (6/1/2.36 ACSR/GZ)
+    26 acsr/gz4,Gopher (6/1/2.36 ACSR/GZ)
+    26 hdcu4,Generic I
+    262 AAC1,Generic I
+    27 AAC3,Generic I
+    28 aac1,7/2.25 AAC
+    28 aac2,7/2.25 AAC
+    28 AAC3,7/2.25 AAC
+    28 AAC3 + 19 AAC1,Generic I
+    28 aac4,7/2.25 AAC
+    29 ACSR/GZ1,Almond (6/1/2.50 ACSR/GZ)
+    29 ACSR/GZ2,Almond (6/1/2.50 ACSR/GZ)
+    29 ACSR/GZ3,Almond (6/1/2.50 ACSR/GZ)
+    29 acsr/gz4,Almond (6/1/2.50 ACSR/GZ)
+    31 HDCU1,Generic I
+    324 ACSR/GZ3,Goat (30/7/3.71 ACSR/GZ)
+    33 SC/AC3,Generic I
+    331 ACSR/GZ1,Generic I
+    337 AAC1,Taurus (19/4.75 AAC)
+    337 AAC3,Taurus (19/4.75 AAC)
+    33KV 120 AAAC1 XQ YQ / CCT120 / 50/50% MMO / 3 CABLES,Generic I
+    33KV 77 AAAC1 XQ YQ / CCT80 / 60/40% MMO,CCT80 (33kV)
+    34 AAAC2,Chlorine (7/2.50 AAAC)
+    34 AAAC3,Chlorine (7/2.50 AAAC)
+    34 aaac4,Chlorine (7/2.50 AAAC)
+    34 AAC1,Generic I
+    356 ACSR/GZ3,
+    36 SC/AC2,Generic I
+    36 SC/AC3,Generic I
+    369 ACSR/GZ1,Generic I
+    37 HDCU3,7/12 HDCU (7/2.64)
+    38 HDCU2,7/2.64 HDCU
+    38 HDCU2 + 40 HDCU2,Generic I
+    38 HDCU2 + 40 HDCU2 + 66 HDCU4,Generic I
+    38 HDCU3,7/2.64 HDCU
+    38 HDCU3 + 110 AAC1 + 40 HDCU1,Generic I
+    38 HDCU3 + 110 AAC4 + 15 HDCU1,Generic I
+    38 HDCU3 + 110 AAC4 + 22 HDCU1,Generic I
+    38 hdcu3 + 160 aac4 + 66 hdcu1,Generic I
+    38 HDCU3 + 40 HDCU1,Generic I
+    38 HDCU3 + 66 HDCU1,4x38 HDCU ++ 4x38 HDCU
+    38 HDCU3 + 66 HDCU1 + 15 HDCU1,Generic I
+    38 HDCU3 + 66 HDCU3 + 22 HDCU1,Generic I
+    38 HDCU3 + 66 HDCU4 + 22 HDCU1,Generic I
+    38 HDCU3 + 66 HDCU5,Generic I
+    38 hdcu4,7/2.64 HDCU
+    38 HDCU4 + 110 AAC4,Generic I
+    38 HDCU4 + 160 AAC2,Generic I
+    38 HDCU4 + 66 HDCU3,Generic I
+    38 hdcu4 + 66 hdcu4,4x38 HDCU ++ 4x66 HDCU
+    38 HDCU4 + 98 HDCU3,Generic I
+    38 HDCU6 + 22 HDCU1,Generic I
+    38 HDCU6 + 22 HDCU2,Generic I
+    38 HDCU7,7/2.64 HDCU
+    38 hdcu7 + 22 hdcu1,Generic I
+    38 hdcu8,7/2.64 HDCU
+    382 ACSR/GZ3,Mango (54/7/3.00 ACSR/GZ)
+    39 HDCU3,19/16 HDCU (39 HDCU)
+    39 SC/CUC3,Generic I
+    40 aac4,Generic I
+    40 hdcu1 + 66 hdcu1,Generic I
+    40 HDCU1 + 66 HDCU3 + 22 HDCU1,Generic I
+    40 HDCU2,19/1.63 HDCU
+    40 HDCU2 + 66 HDCU2,Generic I
+    40 hdcu3,19/1.63 HDCU
+    40 HDCU3 + 15 HDCU1,Generic I
+    40 hdcu3 + 22 hdcu1,3x40 HDCU ++ 1x22 HDCU
+    40 hdcu3 + 66 hdcu1,3x40 HDCU ++ 1x66 HDCU
+    40 HDCU3 + 66 HDCU1 + 22 HDCU1,Generic I
+    40 HDCU3 + 66 HDCU3 + 22 HDCU1,Generic I
+    40 HDCU3 + 66 HDCU4,Generic I
+    40 hdcu3 + 66 hdcu4 + 22 hdcu1,3x40 HDCU ++ 4x66 HDCU ++ 1x22 HDCU
+    40 HDCU3 + 66 HDCU5,Generic I
+    40 HDCU3 + 7 HDCU1,Generic I
+    40 hdcu4,19/1.63 HDCU
+    40 HDCU4 + 22 HDCU1,Generic I
+    40 HDCU4 + 66 HDCU3,Generic I
+    40 HDCU4 + 66 HDCU3 + 22 HDCU1,Generic I
+    40 hdcu4 + 66 hdcu4,4x40 HDCU ++ 4x66 HDCU
+    40 HDCU5 + 66 HDCU3,Generic I
+    40 hdcu7,19/1.63 HDCU
+    40 HDCU7 + 22 HDCU1,Generic I
+    40 hdcu7 + 66 hdcu1,Generic I
+    40 HDCU7 + 66 HDCU7,Generic I
+    40 HDCU8,19/1.63 HDCU
+    408 AAC3,Triton (37/3.75 AAC)
+    409 AAAC3,Phosphorus (37/3.75 AAAC 1120)
+    415 110 AAC2 & 15 HDCU1,Generic I
+    415 110 AAC3 & 66 HDCU1,Generic I
+    415 110 aac3 22 hdcu3 & 66 hdcu1,Generic I
+    415 110 AAC4 & 40 HDCU4,Generic I
+    415 110 aac4 38 hdcu3 & 66 hdcu1,Generic I
+    415 110AAC4 66 HDCU3 & 38 HDCU1,Generic I
+    415 111 AAC4 & 66 HDCU4,Generic I
+    415 111AAC4 & 38 HDCU4,Generic I
+    415 15 HDCU1 & 19 AAC1,Generic I
+    415 15 HDCU2 & 19 AAC2,Generic I
+    415 15 hdcu2 & 22 hdcu1,Generic I
+    415 15 HDCU3 & 19 AAC1,Generic I
+    415 15 HDCU6,7/1.63 HDCU
+    415 150 aac4 xq /abc,(Legacy) 150 AL4 LVABC
+    415 16 aac1,Bug (7/.064 AAC)
+    415 16 aac2,Bug (7/.064 AAC)
+    415 16 aac3,Bug (7/.064 AAC)
+    415 16 hdcu1,7/1.70 HDCU (16 HDCU)
+    415 160 AAC3,Neptune (19/3.25 AAC)
+    415 160 AAC4 & 110 AAC4,4xNeptune ++ 4xWasp
+    415 160 AAC4 & 38 HDCU4,Generic I
+    415 160 AAC4 22 HDCU3 & 15 HDCU1,Generic I
+    415 160 AAC7,Neptune (19/3.25 AAC)
+    415 160 AAC8,Neptune (19/3.25 AAC)
+    415 160AAC4 & 98 HDCU4,Generic I
+    415 19 AAC2 & 15 HDCU1,Generic I
+    415 19 AAC2 & 22 HDCU1,Generic I
+    415 19 AAC3 & 28 AAC1,Generic I
+    415 22 HDCU1 & 19 AAC1,Generic I
+    415 22 HDCU1 & 7 HDCU2,Generic I
+    415 22 HDCU2 & 111 AAC1,Generic I
+    415 22 HDCU2 & 19 AAC2,Generic I
+    415 22 HDCU2 38 HDCU2,Generic I
+    415 22 HDCU2 40 HDCU1 & 15 HDCU1,Generic I
+    415 22 HDCU3 & 16 HDCU1,Generic I
+    415 22 HDCU4 & 15 HDCU1,Generic I
+    415 22 HDCU7 & 15 HDCU1,Generic I
+    415 22 HDCU7 & 40 HDCU1,Generic I
+    415 22 hdcu8,7/2.00 HDCU
+    415 22 HDCU8 & 66 HDCU3,Generic I
+    415 22 hdcu8 z,Generic I
+    415 28 AAC2 & 15 HDCU1,Generic I
+    415 28 AAC3 & 15 HDCU1,Generic I
+    415 28AAC2 19 AAC1,Generic I
+    415 30 aac1,Generic I
+    415 38 HDCU3 & 110 AAC1,Generic I
+    415 38 HDCU3 & 15 HDCU!,Generic I
+    415 38 HDCU3 & 15 HDCU1,Generic I
+    415 38 HDCU3 15 HDCU3 66 HDCU1,Generic I
+    415 38 HDCU3 66 HDCU1 & 22 HDCU1,Generic I
+    415 38 HDCU3 66 HDCU1 & 7 HDCU1,Generic I
+    415 38 HDCU4 & 15 HDCU4,Generic I
+    415 38 hdcu4 & 22 hdcu4,4x38 HDCU ++ 4x22 HDCU
+    415 38 hdcu4 & 38 hdcu4,4x38 HDCU ++ 4x38 HDCU
+    415 38 HDCU4 & 40 HDCU1,Generic I
+    415 38 HDCU4 66 HDCU3 & 22 HDCU1,Generic I
+    415 38 HDCU4 98 HDCU3 & 66 HDCU1,Generic I
+    415 38 HDCU5 & 22 HDCU2,Generic I
+    415 38 HDCU6 & 66 HDCU1,Generic I
+    415 38 HDCU6 & 66 HDCU2,Generic I
+    415 38 HDCU6 66 HDCU1 & 15 HDCU1,Generic I
+    415 38 HDCU6 66 HDCU1 & 22 HDCU1,Generic I
+    415 38 HDCU6 66 HDCU3,Generic I
+    415 38 hdcu7 & 66 hdcu1,Generic I
+    415 40 HDCU1,19/1.63 HDCU
+    415 40 HDCU1 & 22 HDCU1,Generic I
+    415 40 HDCU2 & 22 HDCU1,Generic I
+    415 40 HDCU2 22 HDCU1 & 15 HDCU1,Generic I
+    415 40 HDCU3 & 38 HDCU1,Generic I
+    415 40 HDCU4 & 38 HDCU3,Generic I
+    415 50 aac3,Libra (7/3.00 AAC)
+    415 50 AAC3 & 1x110 AAC1N,Generic I
+    415 50 hdcu4,Generic I
+    415 58 HDCU3 & 38 HDCU1N,7/10 HDCU (58 HDCU)
+    415 58 HDCU4,7/10 HDCU (58 HDCU)
+    415 58 HDCU5,7/10 HDCU (58 HDCU)
+    415 58 HDCU8,7/10 HDCU (58 HDCU)
+    415 6 hdcu1,7/1.04 HDCU (6 HDCU)
+    415 6 hdcu2 zz,Generic I
+    415 60 hdcu8,19/2.00 HDCU
+    415 65 HDCU4 & 38 HDCU4,Generic I
+    415 66 hdcu1,Generic I
+    415 66 HDCU1 & 22 HDCU1,Generic I
+    415 66 HDCU10,Generic I
+    415 66 HDCU10 & 40 HDCU1,Generic I
+    415 66 HDCU12,Generic I
+    415 66 HDCU2 & 22 HDCU2,Generic I
+    415 66 HDCU3  50 HDCU1,Generic I
+    415 66 HDCU3 & 111 AAC1,Generic I
+    415 66 HDCU3 & 40 HDCU3,Generic I
+    415 66 HDCU3 & 58 HDCU1,3x66 HDCU ++ 1x58 HDCU
+    415 66 HDCU3 & 7 HDCU1,Generic I
+    415 66 HDCU3 & 98 HDCU1,Generic I
+    415 66 HDCU3 38 HDCU3 160AAC1,Generic I
+    415 66 HDCU4 & 160 AAC2,Generic I
+    415 66 HDCU4 & 38 HDCU1,Generic I
+    415 66 HDCU4 & 38 HDCU3,Generic I
+    415 66 HDCU4 & 40 HDCU2,Generic I
+    415 66 HDCU4 & 58 HDCU4,4x66 HDCU ++ 4x58 HDCU
+    415 66 HDCU4 & 7 HDCU1,Generic I
+    415 66 HDCU4 & 98 HDCU2,Generic I
+    415 66 HDCU4 38 HDCU3 & 15 HDCU1,Generic I
+    415 66 HDCU4 38 HDCU3 & 40 HDCU1,Generic I
+    415 66 HDCU4 38 HDCU3 58 HDCU1,4x66 HDCU ++ 3x38 HDCU ++ 1x58 HDCU
+    415 66 HDCU4 40 HDCU3 & 15 HDCU1,Generic I
+    415 66 HDCU4 60 HDCU3,Generic I
+    415 66 HDCU5,19/2.11 HDCU
+    415 66 HDCU5 & 22 HDCU4,Generic I
+    415 66 HDCU5 38 HDCU3 & 22 HDCU1,Generic I
+    415 66 HDCU6 & 22 HDCU2,Generic I
+    415 66 HDCU6 & 22 HDCU3,Generic I
+    415 66 HDCU6 & 38 HDCU1,Generic I
+    415 66 HDCU6 & 38 HDCU2,Generic I
+    415 66 HDCU6 & 50 HDCU1,Generic I
+    415 66 HDCU6 & 58 HDCU1,6x66 HDCU ++ 1x58 HDCU
+    415 66 HDCU6 40 HDCU1 & 38 HDCU1N,Generic I
+    415 66 HDCU7 & 38 HDCU1,Generic I
+    415 66 HDCU7 & 50 HDCU1,Generic I
+    415 66 HDCU8 & 160 AAC4,Generic I
+    415 66 HDCU8 & 38 HDCU4,Generic I
+    415 66 HDCU8 38 HDCU3 & 15 HDCU1,Generic I
+    415 90 hdcu4,Generic I
+    415 90 HDCU4 66 HDCU3,Generic I
+    415 90 HDCU4 66 HDCU4,Generic I
+    415 90 HDCU8,Generic I
+    415 98 HDCU3,19/2.56 HDCU
+    415 98 HDCU3 66 HDCU1 40 HDCU3 22 HDCU1,Generic I
+    415 98 HDCU4 & 38 HDCU4,Generic I
+    415 98 HDCU4 & 40 HDCU4,Generic I
+    415 98 hdcu6  66 hdcu1,Generic I
+    415 98 HDCU7 & 66 HDCU1,Generic I
+    415v 10 hdcu2.2 xq / 2 x t,Twin 7/1.35 XLPE Twin Twisted
+    415v 15 cu1 z z / 4 cable,Generic I
+    415v 15 cu2 z z / 2 cable,Generic I
+    415v 150 aac4 xq / abc,150 AL4 LVABC
+    415V 150 AAC4 XQ / ABC / Grey,(Legacy) 150 AL4 LVABC Grey
+    415v 150 aac4 xq + 150 aac4 xq / abc,Twin 150 AL4 LVABC
+    415v 16 cu3 xq cu(n) z,Generic I
+    415v 16 hdcu1 z,7/1.70 PVC (1-Core)
+    415v 16 hdcu2 xq / t + 16 hdcu2 xq / t,Dual 16 T2 Twisted Twin
+    415v 16 hdcu2 z / x 2,Twin 7/1.70 PVC (2-Core)
+    415v 16 hdcu4 z z / t,Twin 7/1.70 PVC (2-Core)
+    415v 24 aac99 xq / lvabc,(Legacy) 25 AL4 LVABC
+    415v 240 al4 xq z / sac,Generic I
+    415v 25 aac2 xq / abc + 25 aac2 xq / abc,Twin 25 AL2 LVABC
+    415v 25 aac4 xq / abc + 25 aac4 xq / abc,Twin 25 AL4 LVABC
+    415v 25 aac4 xq / lvabc,25 AL4 LVABC
+    415v 300 al3 xq br al(n) z / sac,Generic I
+    415v 330 hdcu2 / 2 cable + 25 aac2 xq / lvabc,Generic I
+    415v 35 hdcu4 z z,Generic I
+    415v 6 hdcu1 z,7/1.04 PVC (1-Core)
+    415v 6 hdcu3 z z,Generic I
+    415v 6 hdcu4 z z / t,Generic I
+    415v 7 hdcu1 z,7/.044 PVC (1-Core)
+    415v 7 hdcu2 z z + 7 hdcu2 z z / twisted,Twin ++ Twist 7 TW2
+    415v 7 hdcu3 z / twisted,Generic I
+    415v 7 hdcu4 z / twisted,Twin 7/.044 PVC 2-Core (twisted)
+    415v 95 aac12 xq / abc,Triple 95 AL4 LVABC
+    415v 95 aac2 xq / abc + 95 aac2 xq / abc,Twin 95 AL2 LVABC
+    415v 95 aac3 xq + 70 aac1 xq / com / lvabc,(Legacy) 95 AL4 LVABC
+    415v 95 aac3 xq + 70 aac1 xq + 25 aac1 / com / lvabc+sl,Generic I
+    415v 95 aac4 xq / abc,95 AL4 LVABC
+    415v 95 aac4 xq / abc + 95 aac4 xq / abc,Twin 95 AL4 LVABC
+    415v 95 aac4 xq + 25 aac1 xq / com / lvabc+sl,Generic I
+    415v 95 aac6 xq + 54.6 aac2 xq + 25 aac2 xq / lvabc+sl,Generic I
+    415V 95 AAC6 XQ + 70 AAC2 XQ / COM / 2X95LVABC,(Legacy) Twin 95 AL4 LVABC
+    415v 95 aac8 xq + 25 aac2 xq / com / lvabc+sl,Generic I
+    415v 95 al1 z / 4 cable,Generic I
+    42 ACSR/GZ2,Apple (6/1/3.00 ACSR/GZ)
+    42 ACSR/GZ3,Apple (6/1/3.00 ACSR/GZ)
+    42 acsr/gz4,Apple (6/1/3.00 ACSR/GZ)
+    42 HDCU2,Generic I
+    42 HDCU3,Generic I
+    42 hdcu4,Generic I
+    42 SC/GZ2,7/2.75 SC/GZ Stay Wire
+    42 SC/GZ3,7/2.75 SC/GZ
+    448 ACSR/GZ1,Orange (54/7/3.25 ACSR/GZ)
+    46 HDCU3,Generic I
+    49 AAAC3,Generic I
+    49 AAC2,Generic I
+    49 AAC2 + 309 AAC1,Generic I
+    49 HDCU2,Generic I
+    50 aac1,Libra (7/3.00 AAC)
+    50 AAC2,Libra (7/3.00 AAC)
+    50 aac4,Libra (7/3.00 AAC)
+    50 AAC4 + 111 AAC3,Generic I
+    50 AL3,Grub (7/.118 AAC)
+    506 AAAC1,Selenium (61/3.25 AAAC)
+    506 AAC1,Uranus (61/3.25 AAC)
+    506 AAC3,Uranus (61/3.25 AAC)
+    506 AAC6 / 2 COND/PH,Twin Uranus (61/3.25 AAC)
+    508 ACSR/GZ3,Olive (54/7/3.50 ACSR/GZ)
+    508 ACSR/GZ6 / 2 COND/PH,Twin Olive (54/7/3.50 ACSR/GZ)
+    517 ACSR/GZ3,Moose (54/7/3.53 ACSR/GZ)
+    517 ACSR/GZ6 / 2 COND/PH,Twin Moose (54/7/3.53 ACSR/GZ)
+    57 SC/AC3,Generic I
+    58 CDCU3,Generic I
+    58 HDCU3,7/10 HDCU (58 HDCU)
+    587 AAAC6 / 2 COND/PH,Generic I
+    6 ACSR/GZ2,Generic I
+    6 ACSR/GZ3,Generic I
+    6 hdcu2,7/1.04 HDCU (6 HDCU)
+    60 HDCU2,19/2.00 HDCU
+    60 HDCU2 / 2 COND/PH,Twin 19/2.00 HDCU
+    60 HDCU3,19/2.00 HDCU
+    60 HDCU3 + 22 HDCU1,Generic I
+    60 hdcu4,19/2.00 HDCU
+    60 HDCU7,19/2.00 HDCU
+    63 acsr/gz2,Mink (6/1/3.66 ACSR/GZ)
+    63 ACSR/GZ3,Mink (6/1/3.66 ACSR/GZ)
+    63 acsr/gz4,Mink (6/1/3.66 ACSR/GZ)
+    64 AAC2,Fly (7/3.40 AAC)
+    64 AAC2 + 111 AAC2,Generic I
+    64 AAC3,Fly (7/3.40 AAC)
+    64 AAC3 + 111 AAC1,Generic I
+    64 aac4,Fly (7/3.40 AAC)
+    65 ACSR/GZ2,Banana (6/1/3.75 ACSR/GZ)
+    65 ACSR/GZ3,Banana (6/1/3.75 ACSR/GZ)
+    65 acsr/gz4,Banana (6/1/3.75 ACSR/GZ)
+    65 HDCU3 + 38 HDCU1,Generic I
+    65 hdcu4,7/3.45 HDCU (7/.136 HDCU)
+    66 CDCU3,Generic I
+    66 hdcu2,19/2.11 HDCU
+    66 HDCU3,19/2.11 HDCU
+    66 HDCU3 + 110 AAC1,3x66 HDCU ++ 1xWasp
+    66 hdcu3 + 110 aac4 + 40 hdcu1,3x66 HDCU ++ 4xWasp ++ 1x40 HDCU
+    66 hdcu3 + 15 hdcu1,3x66 HDCU ++ 1x15 HDCU
+    66 HDCU3 + 160 AAC4 + 40 HDCU1,Generic I
+    66 HDCU3 + 22 HDCU1,3x66 HDCU ++ 1x22 HDCU
+    66 hdcu3 + 38 hdcu1,3x66 HDCU ++ 1x38 HDCU
+    66 hdcu3 + 40 hdcu1,3x66 HDCU ++ 1x40 HDCU
+    66 hdcu3 + 40 hdcu1 + 95 aac4 xq / abc,Generic I
+    66 HDCU3 + 98 HDCU3,Generic I
+    66 HDCU3 + 98 HDCU4 + 40 HDCU1,4x98 HDCU ++ 3x66 HDCU ++ 1x40 HDCU
+    66 hdcu4,19/2.11 HDCU
+    66 HDCU4 + 110 AAC2,4x66 HDCU ++ 2xWasp
+    66 HDCU4 + 110 AAC4,4x66 HDCU ++ 4xWasp
+    66 HDCU4 + 111 AAC3,Generic I
+    66 HDCU4 + 15 HDCU1,Generic I
+    66 HDCU4 + 22 HDCU1,Generic I
+    66 hdcu4 + 40 hdcu1,Generic I
+    66 hdcu4 + 98 hdcu3,Generic I
+    66 HDCU4 + 98 HDCU3 + 40 HDCU1,Generic I
+    66 HDCU4 + 98 HDCU4,4x98 HDCU ++ 4x66 HDCU
+    66 HDCU5 + 40 HDCU1,Generic I
+    66 HDCU5 + 98 HDCU3,Generic I
+    66 HDCU6,19/2.11 HDCU
+    66 HDCU6 / 2 COND/PH,Twin 19/2.11 HDCU
+    66 HDCU6 + 22 HDCU1,Generic I
+    66 HDCU6 + 22 HDCU2 + 40 HDCU1,Generic I
+    66 hdcu6 + 40 hdcu1,6x66 HDCU ++ 1x40 HDCU
+    66 HDCU6 + 40 HDCU1 + 22 HDCU1,3x66 HDCU ++ 1x40 HDCU ++ 1x22 HDCU
+    66 HDCU6 + 40 HDCU2,6x66 HDCU ++ 2x40 HDCU
+    66 hdcu7,19/2.11 HDCU
+    66 HDCU7 + 22 HDCU1,7x66 HDCU ++ 1x22 HDCU
+    66 HDCU7 + 22 HDCU2,Generic I
+    66 hdcu7 + 40 hdcu1,7x66 HDCU ++ 1x40 HDCU
+    66 HDCU7 + 40 HDCU2,Generic I
+    66 hdcu8,19/2.11 HDCU
+    66 HDCU8 + 160 AAC4,Generic I
+    66 hdcu8 + 40 hdcu1,Generic I
+    66 HDCU9 + 38 HDCU3,Generic I
+    66 HDCU9 + 40 HDCU1,Generic I
+    66 HDCU9 + 40 HDCU2,Generic I
+    67 AAC2 + 111 AAC1,Generic I
+    67 AAC3,Generic I
+    67 HDCU3,19/14 HDCU (19/2.03 HDCU)
+    68 HDCU2 / 2 COND/PH,Twin 19/2.03 HDCU
+    68 HDCU3,19/2.03 HDCU
+    7 ACSR/GZ2,Quince (3/4/1.75 ACSR/GZ)
+    7 ACSR/GZ3,Quince (3/4/1.75 ACSR/GZ)
+    7 hdcu1,7/1.12 HDCU
+    7 HDCU1 + 15 HDCU1,1x7 HDCU ++ 1x15 HDCU
+    7 hdcu1 + 15 hdcu2,1x7 HDCU ++ 2x15 HDCU
+    7 HDCU1 + 19 AAC1 + 15 HDCU1,Generic I
+    7 HDCU1 + 22 HDCU1,Generic I
+    7 HDCU1 + 22 HDCU2,Generic I
+    7 HDCU1 + 28 AAC1,Generic I
+    7 HDCU2 + 15 HDCU1,2x7 HDCU ++ 1x15 HDCU
+    7 HDCU2 + 19 AAC1,Generic I
+    7 hdcu2 + 22 hdcu2,Generic I
+    7 HDCU2 + 28 AAC1,Generic I
+    7 hdcu2 + 7 hdcu2,Generic I
+    7 hdcu3 + 15 hdcu1,Generic I
+    77 AAAC1,Generic I
+    77 AAC2,Mars (7/3.75 AAC)
+    77 AAC2 + 111 AAC1,Generic I
+    77 AAC3,Mars (7/3.75 AAC)
+    77 aac4,Mars (7/3.75 AAC)
+    77 SC/AC3,
+    9 SC/GZ1,3/2.00 SC/GZ
+    9 SC/GZ2,3/2.00 SC/GZ
+    9 SC/GZ3,3/2.00 SC/GZ
+    91 HDCU3,Generic I
+    98 HDCU3 + 22 HDCU1,Generic I
+    98 HDCU3 + 40 HDCU1,3x98 HDCU ++ 1x40 HDCU
+    98 hdcu3 + 66 hdcu1,3x98 HDCU ++ 1x66 HDCU
+    98 hdcu4,19/2.56 HDCU
+    98 HDCU6 + 66 HDCU2,Generic I
+    98 HDCU7,19/2.56 HDCU
+    98 hdcu8,19/2.56 HDCU
+    HDCU3,HDCU (Unknown CSA)
+    NR,NOT RECORDED
+    '''
+}

@@ -1,0 +1,276 @@
+{
+  token: "veg~ct_SpanTrees"
+  is_custom_class: true
+  fields: [
+    {
+      name: "color"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        if(
+          fall_in_risk_description="Level 1 - Trunk",
+          "red",
+          fall_in_risk_description="Level 2 - Branch",
+          "orange",
+          fall_in_risk_description="Level 3 - Limb",
+          "yellow",
+          fall_in_risk_description="Near miss",
+          "pink"
+        )
+        '''
+    }
+    {
+      name: "dist_to_top_tree_point"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "measure_distance(tree.top_tree_point, span.stack.top_span.u_survey_cables)"
+    }
+    {
+      name: "encroachment_key"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        if(
+          p1_points.num_points > 0, "P1",
+          p2_points.num_points > 0, "P2",
+          p3_points.num_points > 0, "P3",
+          p4_points.num_points > 0, "P4",
+        )
+        '''
+    }
+    {
+      name: "fall_in_risk_description"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        // all greyed out fields are suggestions for better potentil definition
+        if(is_fall_in_risk,
+        if(
+          u_overfall_distance >5ft,
+          //and(u_level_1_encroachment.num_points >0,
+          //u_level_1_2_and_3_encroachment_grouped.num_points > 1500),
+          "Level 1 - Trunk",
+          u_overfall_distance > 2.5ft,
+          //and(u_level_2_encroachment.num_points >0,
+          //u_level_1_2_and_3_encroachment_grouped.num_points > 500),
+          "Level 2 - Branch",
+          u_overfall_distance  > 0ft,
+          //u_level_1_2_and_3_encroachment_grouped.num_points > 0,
+          "Level 3 - Limb",
+          u_overfall_distance  <> null,
+          "Near miss",
+          "No fall in",
+        ))
+        '''
+    }
+    {
+      name: "fall_in_status"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        if(
+          and(span.u_fall_in_risk_assessment = "Fall in", fir_points.num_points > 5),
+          span.u_fall_in_risk_assessment,
+          "Clear"
+        )
+        '''
+    }
+    {
+      name: "fir_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        intersect_points(tree.points,span.u_fall_in_risk_zone,"FIR")
+        '''
+    }
+    {
+      name: "geom"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "tree.geom"
+    }
+    {
+      name: "is_fall_in_risk"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "u_overfall_distance > -2ft"
+    }
+    {
+      name: "p1_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          span_points: span.u_veg_environment.u_p1_points,
+          
+          intersect_points(
+            span_points,  
+            tree.points
+          )
+        )
+        '''
+    }
+    {
+      name: "p2_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          span_points: span.u_veg_environment.u_p2_points,
+          
+          intersect_points(
+            span_points,  
+            tree.points
+          )
+        )
+        '''
+    }
+    {
+      name: "p3_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          span_points: span.u_veg_environment.u_p3_points,
+          
+          intersect_points(
+            span_points,  
+            tree.points
+          )
+        )
+        '''
+    }
+    {
+      name: "p4_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          span_points: span.u_veg_environment.u_p4_points,
+          
+          intersect_points(
+            span_points,  
+            tree.points
+          )
+        )
+        '''
+    }
+    {
+      name: "p_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        combine_points(list(
+          p1_points,
+          p2_points,
+          p3_points,
+          p4_points,
+        ))
+        '''
+    }
+    {
+      name: "span"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "index(model().Spans,-1)"
+    }
+    {
+      name: "tree"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "index(model().u_trees,-1)"
+    }
+    {
+      name: "tree_top_angled_over_span"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        tree.tree_base +
+        tree.affected_tree_height * normalize(dist_to_top_tree_point.end - tree.tree_base)
+        '''
+    }
+    {
+      name: "u_distance_from_the_base_of_the_tree"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "measure_distance(tree.tree_base,span.u_survey_cables)"
+    }
+    {
+      name: "u_overfall_distance"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "tree.affected_tree_height - u_distance_from_the_base_of_the_tree.distance"
+    }
+    {
+      name: "viz_arc_to_span"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        if(
+          is_fall_in_risk,
+          viz("style", color&" solid width:0.25", list(
+            viz("arc",
+              tree.tree_base,
+              0.1m * normalize(dist_to_top_tree_point.end - tree.tree_base),
+              vec3(0,0,tree.affected_tree_height)
+            ),
+            viz("line",
+              dist_to_top_tree_point.end,
+              tree_top_angled_over_span
+            ),  
+          ))
+        )
+        '''
+    }
+  ]
+}

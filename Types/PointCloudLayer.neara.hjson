@@ -1,0 +1,73 @@
+{
+  token: "PointCloudLayer"
+  is_custom_class: false
+  fields: [
+    {
+      name: "veg~u_action_hide"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "make_field_mutation(self,visible: false)"
+    }
+    {
+      name: "veg~u_action_show"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "make_field_mutation(self,visible: true)"
+    }
+    {
+      name: "veg~u_is_veg"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        type = "veg"
+        '''
+    }
+    {
+      name: "veg~u_max_density"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "make_field_mutation(self, load_level: 2)"
+    }
+    {
+      name: "veg~u_medium_density"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "make_field_mutation(self, load_level: 1)"
+    }
+    {
+      name: "veg~u_unload"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "make_field_mutation(self, load_level: -1)"
+    }
+    {
+      name: "veg~u_visible_false"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "make_field_mutation(self, visible: false)"
+    }
+    {
+      name: "veg~u_visible_true"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "make_field_mutation(self, visible: true)"
+    }
+  ]
+}

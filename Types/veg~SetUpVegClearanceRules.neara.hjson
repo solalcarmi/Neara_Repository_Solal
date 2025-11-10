@@ -1,0 +1,133 @@
+{
+  token: "veg~ct_SetUpVegClearanceRules"
+  is_custom_class: true
+  fields: [
+    {
+      name: "bushfire_factor"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "real"
+      unit: "ft"
+    }
+    {
+      name: "class_key"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "clearance_above"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "real"
+      unit: "ft"
+    }
+    {
+      name: "clearance_below"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "real"
+      unit: "ft"
+    }
+    {
+      name: "clearance_ends"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "real"
+      unit: "ft"
+    }
+    {
+      name: "clearance_middle"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "real"
+      unit: "ft"
+    }
+    {
+      name: "clearance_mode"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+          or(clearance_above <> 0m,clearance_below <> 0m), "combined_volume",
+          "radial"
+        )
+        '''
+    }
+    {
+      name: "clearance_radial_ends"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "real"
+      unit: "ft"
+    }
+    {
+      name: "clearance_radial_middle"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "real"
+      unit: "ft"
+    }
+    {
+      name: "conductor_key"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "voltage_key&class_key"
+    }
+    {
+      name: "index"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "index_of(model().veg_clearance_rules,self)"
+    }
+    {
+      name: "span_length_lower_limit"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "real"
+      unit: "ft"
+    }
+    {
+      name: "span_length_upper_limit"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "real"
+      unit: "ft"
+    }
+    {
+      name: "voltage_key"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "text"
+    }
+  ]
+}

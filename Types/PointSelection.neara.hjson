@@ -1,0 +1,63 @@
+{
+  token: "Point Selection"
+  is_custom_class: false
+  fields: [
+    {
+      name: "veg~u_first_class"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "index(classification_codes,0)"
+    }
+    {
+      name: "veg~u_first_constituent_dataset"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "index(constituent_datasets,0)"
+    }
+    {
+      name: "veg~u_first_dataset"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "index(datasets,0)"
+    }
+    {
+      name: "veg~u_points_label"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        let(
+          label:
+            try(
+            find(
+              model().defect_classification[].encroachment_key&"_c",
+              model().defect_classification[].point_cloud_class = u_first_class
+            ),
+            "veg"
+          ),
+            
+          combine_points(list(self),label)
+        )
+        '''
+    }
+    {
+      name: "veg~u_year"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        index(text_split(time_range.start&"","-",true),0)
+        '''
+    }
+  ]
+}

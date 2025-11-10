@@ -1,0 +1,14 @@
+{
+  token: "CableAttachment"
+  is_custom_class: false
+  fields: [
+    {
+      name: "veg~u_2d_dist_to_pole"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "(vec2(structure_endpoint) - section_attachment.assembly.pole.location).norm"
+    }
+  ]
+}

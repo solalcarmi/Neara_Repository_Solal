@@ -1,0 +1,15 @@
+{
+  id: "372af6ba9f86c87762d4491e"
+  key: "veg~service_centers"
+  token: "l"
+  type: "8eb41876518fcd92f125b82"
+  type_key: "veg~ServiceCenters"
+  data:
+    '''
+    service_center
+    BIG
+    MDL
+    ODE
+    STN
+    '''
+}

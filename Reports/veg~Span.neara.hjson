@@ -1,0 +1,557 @@
+{
+  id: "c6c29b808ce4dfcc5c844f5d"
+  title: "veg~Span"
+  description: null
+  root: "Model"
+  favorite: false
+  editable_data: true
+  export_column_header_type: "field_title"
+  table: {
+    query: {
+      queries: [
+        {
+          collection: "Spans"
+          filter: {
+            conditions: []
+            bounds_filter: "none"
+            quick_search: null
+          }
+        }
+      ]
+      sort: {
+        fields: []
+      }
+      page_size: 300
+      offset: 0
+    }
+    fields: [
+      {
+        name: "veg~u_gis_id"
+        title: "Gis Id"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 100
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_voltage_2"
+        title: "Voltage"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 100
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_region_in_gis"
+        title: "Region In Gis"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 100
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_line_name"
+        title: "Line Name"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 100
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_encroachment_key"
+        title: "Span Encroachment Key"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 124
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: true
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: [
+              {
+                field_value: "P1"
+                color: "#FF0000"
+              }
+              {
+                field_value: "P2"
+                color: "#FF8000"
+              }
+              {
+                field_value: "P3"
+                color: "#FFFF00"
+              }
+              {
+                field_value: "P4"
+                color: "#80FF00"
+              }
+              {
+                field_value: "_clear"
+                color: "#00FF00"
+              }
+            ]
+          }
+        }
+      }
+      {
+        name: "veg~u_encroachment_status"
+        title: "Encroachment Status"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 140
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_encroached_tree_count"
+        title: "Encroached Tree Count"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 100
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "color_gradient"
+          color_gradient: {
+            points: [
+              {
+                field_value: 0
+                color: "#00ff00"
+              }
+              {
+                field_value: 10
+                color: "#ff0000"
+              }
+            ]
+          }
+        }
+      }
+      {
+        name: "pole1.label"
+        title: "Pole1 Label"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 100
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "pole2.label"
+        title: "Pole2 Label"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 100
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_encroached"
+        title: "Encroached"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 100
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "length"
+        title: "Length"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 100
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_estimate_trim_cost_remaining"
+        title: "Estimate Trim Cost Remaining"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 106
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_voltage"
+        title: "Voltage"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 100
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_conductor_type"
+        title: "Conductor Type"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 107
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "section.veg~u_conductor_key"
+        title: "Section Conductor Key"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 100
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_required_clearance"
+        title: "Required Clearance"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 100
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "scan_time"
+        title: "Scan Time"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 100
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_encroachment_volume"
+        title: "Encroachment Volume"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 100
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "color_gradient"
+          color_gradient: {
+            points: [
+              {
+                field_value: 0
+                color: "#00ff00"
+              }
+              {
+                field_value: 334.59185933107204
+                color: "#ff0000"
+              }
+            ]
+          }
+        }
+      }
+      {
+        name: "veg~u_veg_environment.veg~u_p1_points.num_points"
+        title: "Veg Environment P1 Points Num Points"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 133
+        quicksearch: false
+        search_option: "none"
+        show_spatial: true
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_veg_environment.veg~u_p2_points.num_points"
+        title: "Veg Environment P2 Points Num Points"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 133
+        quicksearch: false
+        search_option: "none"
+        show_spatial: true
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_veg_environment.veg~u_p3_points.num_points"
+        title: "Veg Environment P3 Points Num Points"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 133
+        quicksearch: false
+        search_option: "none"
+        show_spatial: true
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_veg_environment.veg~u_p4_points.num_points"
+        title: "Veg Environment P4 Points Num Points"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 133
+        quicksearch: false
+        search_option: "none"
+        show_spatial: true
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "stack.veg~u_veg_auto_qa_points.num_points"
+        title: "Stack Veg Auto Qa Points Num Points"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 122
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+    ]
+  }
+  views: []
+  visibility: {
+    visibility: "external"
+    org_id: null
+  }
+  viz_config: {
+    visualizing: true
+    visualizing_quick_toggle: false
+    visualizing_pinned: false
+    color3d_objects: true
+    visualize_on_world_terrain: true
+    world_geom_source: false
+    elevation_geom_source: null
+    default_color: {
+      r: 0.25098039215686274
+      g: 0.25098039215686274
+      b: 1
+      a: 1
+    }
+    threshold: 5
+    overlay_min_zoom: 0
+    overlay_max_zoom: 23
+    interactive_terrain_visualization: false
+  }
+  local_mode: false
+  global_enabled: true
+  global_search_enabled: false
+  properties: {}
+}

@@ -1,0 +1,58 @@
+{
+  token: "Conductor"
+  is_custom_class: false
+  fields: [
+    {
+      name: "veg~u_class_key"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        "Bare"
+        
+        
+        
+        //if(type.conductor_class = "ELEC_INS", "Covered", "Bare")
+        /*
+        try(
+          if(and(type.u_veg_management_cond_type = "Acsr",voltage <=1kV), "Bare"),
+          type.u_veg_management_cond_type,
+          "Bare"
+        )
+        '''
+    }
+    {
+      name: "veg~u_conductor_key"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "u_voltage_key&u_class_key"
+    }
+    {
+      name: "veg~u_voltage_key"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(voltage < 1kV, "Lv","Hv")
+        
+        
+        
+        
+        /*
+        if(
+          voltage <= 1kV, "Lv",
+          and(any(u_class_key = list("Acsr","Cct","HvAbc","Bare")), voltage >= 11kV,voltage <= 22kV), "11to22Kv",
+          and(voltage >= 11kV, voltage <= 33kV), "11to33Kv",
+          and(voltage >= 33kV, voltage <= 66kV), "33to66Kv",
+          voltage = 132kV, "132Kv",
+        )
+        '''
+    }
+  ]
+}

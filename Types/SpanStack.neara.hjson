@@ -1,0 +1,494 @@
+{
+  token: "SpanStack"
+  is_custom_class: false
+  fields: [
+    {
+      name: "veg~u_bay_easement"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          start: pole1.location - (pole2.location - pole1.location)*(u_bay_easement_width/length),
+          end: pole2.location - (pole1.location - pole2.location)*(u_bay_easement_width/length),
+          perpVec: u_perp_vec,  
+          geo_polygon(
+            list(list(
+              start + u_perp_vec*u_bay_easement_width,
+              start - u_perp_vec*u_bay_easement_width,
+              end - u_perp_vec*u_bay_easement_width,
+              end + u_perp_vec*u_bay_easement_width,
+          
+            ))
+          )  
+        )  
+        
+        
+        /*
+        let(
+          start: pole1.location - (pole2.location - pole1.location)*(u_bay_easement_width/length),
+          end: pole2.location - (pole1.location - pole2.location)*(u_bay_easement_width/length),
+          perpVec: u_perp_vec,
+          
+          geo_polygon(
+            list(list(
+              start + u_perp_vec*u_bay_easement_width,
+              start - u_perp_vec*u_bay_easement_width,
+              end - u_perp_vec*u_bay_easement_width,
+              end + u_perp_vec*u_bay_easement_width,
+              start + u_perp_vec*u_bay_easement_width,
+            
+            ))
+          )  
+        )
+        '''
+    }
+    {
+      name: "veg~u_bay_easement_lines"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        let(
+          start: pole1.location - (pole2.location - pole1.location)*(u_bay_easement_width/length),
+          end: pole2.location - (pole1.location - pole2.location)*(u_bay_easement_width/length),
+          perpVec: u_perp_vec,
+          
+          geo_linestring(
+             list(start + u_perp_vec*u_bay_easement_width, start - u_perp_vec*u_bay_easement_width),
+             list(end - u_perp_vec*u_bay_easement_width, end + u_perp_vec*u_bay_easement_width),
+             list(start + u_perp_vec*u_bay_easement_width, end + u_perp_vec*u_bay_easement_width),
+             list(start - u_perp_vec*u_bay_easement_width, end - u_perp_vec*u_bay_easement_width),
+            
+            
+          )  
+        )
+        '''
+    }
+    {
+      name: "veg~u_bay_easement_volume"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "polygon_to_volume(u_bay_easement,false,20m,20m)"
+    }
+    {
+      name: "veg~u_bay_easement_width"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "50ft"
+    }
+    {
+      name: "veg~u_bay_sections"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          sectionCount: 10, //can be scaled per bay length (ie- 1 section per approx. 10m using: round(length/(Xm)) -> where X is desired section length in m)   
+          p1: u_pole_north.location,
+          p2: u_pole_south.location,
+          extension_length: u_bay_easement_width,
+         
+          let(  
+          start: p1 - (p2 - p1)*(extension_length/length),
+          end: p2 - (p1 - p2)*(extension_length/length),
+        
+          
+            broadcast(
+              section: range(sectionCount),   
+              make_immutable_record(
+                "BaySections", 
+                
+                span_stack: not_null(self),
+                start: start + (end - start)*section/sectionCount,
+                end:   start + (end - start)*(section + 1)/sectionCount,
+              )
+            )
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_bay_trees"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        let(
+          trees: filter(model().u_trees,geo_intersect(model().u_trees[].geom,u_bay_easement_lines)),
+          if(
+            len(trees) > 0,
+            broadcast(
+              tree_record: trees,
+              make_immutable_record(
+                "BayTrees",
+                span_stack: self,
+                tree: tree_record,
+              )
+            )
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_bay_vec"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          p1:max_by(list(pole1,pole2),list(pole1,pole2)[].location[].y).location,
+          p2: min_by(list(pole1,pole2),list(pole1,pole2)[].location[].y).location,
+          
+          p1 + (p2 - p1)
+          
+        )
+        '''
+    }
+    {
+      name: "veg~u_cust_env_perpendicular_wind_factor"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "sin(u_cust_env_wind_angle_of_attack*pi()/180)"
+    }
+    {
+      name: "veg~u_cust_env_wind_angle_of_attack"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        if(
+         abs(u_cust_env_wind_angle_pole_pair_angle_delta) <= 90,
+         abs(u_cust_env_wind_angle_pole_pair_angle_delta),
+         abs(180 - abs(u_cust_env_wind_angle_pole_pair_angle_delta)) <= 90,
+         abs(180 - abs(u_cust_env_wind_angle_pole_pair_angle_delta)),
+         180 - abs(180 - abs(u_cust_env_wind_angle_pole_pair_angle_delta))
+        )
+        '''
+    }
+    {
+      name: "veg~u_cust_env_wind_angle_pole_pair_angle_delta"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "model().u_cust_env_wind_direction - u_pole_pair_angle_radians*180/pi()"
+    }
+    {
+      name: "veg~u_encroachment_key"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        u_prune_zone_encroachment
+        '''
+    }
+    {
+      name: "veg~u_gis_span"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        find(
+          Spans,
+          Spans[].gis_properties <> null
+        )
+        '''
+    }
+    {
+      name: "veg~u_gis_span_count"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "len(u_gis_spans)"
+    }
+    {
+      name: "veg~u_gis_spans"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        filter(
+          Spans,
+          Spans[].gis_properties <> null
+        )
+        '''
+    }
+    {
+      name: "veg~u_land_parcels_lookup"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        index(geo_query(
+          model().dt_tx_land_parcel,
+          vec2(top_span.approximate_midpoint),
+          1m
+        ),0)
+        '''
+    }
+    {
+      name: "veg~u_land_use"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+          or(
+           u_land_parcels_lookup = null,
+           any(u_land_parcels_lookup.owner_name = list("TXDOT","City of","County","ONCOR"))
+          ),
+            "public",
+            "private"
+        )
+        '''
+    }
+    {
+      name: "veg~u_oh_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "combine_points(Spans[].veg~u_veg_environment[].u_points_oh_veg)"
+    }
+    {
+      name: "veg~u_p1_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "combine_points(u_gis_spans[].veg~u_veg_environment[].u_p1_points)"
+    }
+    {
+      name: "veg~u_p2_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "combine_points(u_gis_spans[].veg~u_veg_environment[].u_p2_points)"
+    }
+    {
+      name: "veg~u_p3_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "combine_points(u_gis_spans[].veg~u_veg_environment[].u_p3_points)"
+    }
+    {
+      name: "veg~u_p4_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "combine_points(u_gis_spans[].veg~u_veg_environment[].u_p4_points)"
+    }
+    {
+      name: "veg~u_perp_vec"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          p1: max_by(list(pole1,pole2),list(pole1,pole2)[].location[].y).location, //northern most pole
+          p2: min_by(list(pole1,pole2),list(pole1,pole2)[].location[].y).location, //southern most pole
+          let(
+             v: p1 - p2,
+            let(
+              unit_vector: v/v.norm ,    
+              vec2(-unit_vector.y, unit_vector.x)
+            )
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_points_veg"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        categorize_volume(u_bay_easement_volume,"veg_bay","veg")
+        '''
+    }
+    {
+      name: "veg~u_points_veg_partitioned_by_dataset"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          partitions: partition_points(u_points_veg,by_dataset: true),
+          
+          sort_by(
+            partitions,
+            partitions[].time_range[].start - model().u_epoch,
+            order: "desc"
+          )
+        )
+        /*sorts resulting list of dataset points by timestamp  
+        most recent to latest
+        '''
+    }
+    {
+      name: "veg~u_pole_north"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "max_by(list(pole1,pole2),list(pole1,pole2)[].location[].y)"
+    }
+    {
+      name: "veg~u_pole_pair_angle"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          dx: u_pole_north.location.x - u_pole_south.location.x,
+          dy: u_pole_north.location.y - u_pole_south.location.y,
+          
+          if(
+            and(dx > 0, dy > 0), atan(dx/dy) + unit_value(0,"degrees"),//quadrant I
+            and(dx < 0, dy > 0), atan(dx/dy) + unit_value(360,"degrees"),//quadrant II
+            and(dx < 0, dy < 0), atan(dx/dy) + unit_value(180,"degrees"),//quadrant III
+            and(dx > 0, dy < 0), atan(dx/dy) + unit_value(180,"degrees"),//quadrant IV   
+          )  
+        
+        
+        )
+        '''
+    }
+    {
+      name: "veg~u_pole_pair_angle_radians"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        parse_num(u_pole_pair_angle&"")
+        '''
+    }
+    {
+      name: "veg~u_pole_south"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "index(exclude(u_poles,list(u_pole_north)),0)"
+    }
+    {
+      name: "veg~u_poles"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "list(pole1,pole2)"
+    }
+    {
+      name: "veg~u_prune_zone_encroachment"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+          u_p1_points.num_points > 0, "P1",
+          u_p2_points.num_points > 0, "P2",
+          u_p3_points.num_points > 0, "P3",
+          u_p4_points.num_points > 0, "P4",
+          u_oh_points.num_points > 0, "OH",
+        )
+        '''
+    }
+    {
+      name: "veg~u_report_global_id"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        pole1.id & "-"& pole2.id
+        '''
+    }
+    {
+      name: "veg~u_veg_auto_qa_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        combine_points(
+          flatten(list(
+            list(pole1.u_veg_auto_qa_points,pole2.u_veg_auto_qa_points),
+            Spans[].u_points_cvv
+          )),
+          "veg_autoQa"
+        )
+        '''
+    }
+    {
+      name: "veg~u_worst_veg_encroachment"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "u_worst_veg_encroachment_span.u_veg_environment.u_encroachment_key"
+    }
+    {
+      name: "veg~u_worst_veg_encroachment_span"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        min_by(
+          u_gis_spans, //Spans
+          u_gis_spans[].u_veg_environment[].u_encroachment_prio
+        )
+        '''
+    }
+  ]
+}

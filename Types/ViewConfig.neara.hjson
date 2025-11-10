@@ -1,0 +1,17 @@
+{
+  token: "ViewConfig"
+  is_custom_class: false
+  fields: [
+    {
+      name: "veg~u_ui_input_slider_point_size"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        ui_input_slider(self,"point_cloud_point_size", min:0,max:2,step:0.05,digits: 3)
+        '''
+    }
+  ]
+}

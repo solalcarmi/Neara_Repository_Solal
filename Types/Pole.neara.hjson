@@ -1,0 +1,144 @@
+{
+  token: "Pole"
+  is_custom_class: false
+  fields: [
+    {
+      name: "veg~u_asset_imagery"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        list(
+          make_image(make_url("https://i.imgur.com/BQKSKcU.png"), "Image 0"),
+          make_image(make_url("https://i.imgur.com/xffPCr9.png"), "Image 1"),
+          make_image(make_url("https://i.imgur.com/7LgDbFa.png"), "Image 2"),
+          make_image(make_url("https://i.imgur.com/XqP61Qf.png"), "Image 3"),
+        )
+        
+        /*
+        if(
+          label = "326933164",
+          list(
+            make_image(make_url("https://i.imgur.com/BQKSKcU.png"), "Image 0"),
+            make_image(make_url("https://i.imgur.com/xffPCr9.png"), "Image 1"),
+            make_image(make_url("https://i.imgur.com/7LgDbFa.png"), "Image 2"),
+            make_image(make_url("https://i.imgur.com/XqP61Qf.png"), "Image 3"),
+          ),
+          list()
+        )
+        '''
+    }
+    {
+      name: "veg~u_gis_age"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        get_prop(gis_properties,"age","integer")
+        '''
+    }
+    {
+      name: "veg~u_gis_pole_number"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        get_prop(gis_properties,"PoleNumber","text")
+        '''
+    }
+    {
+      name: "veg~u_pla_report_results"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        find(
+          model().u_pla_results_report,
+          model().u_pla_results_report[].pole_id = id
+        )
+        '''
+    }
+    {
+      name: "veg~u_test"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "model().u_filter_voltage_formula"
+    }
+    {
+      name: "veg~u_veg_auto_qa_crossarm_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        combine_points(
+          Assemblies[].FrameComponents[].u_veg_auto_qa_points
+        )
+        '''
+    }
+    {
+      name: "veg~u_veg_auto_qa_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        combine_points(
+          list(u_veg_auto_qa_shaft_points,u_veg_auto_qa_crossarm_points),
+          "auto_qa"
+        )
+        '''
+    }
+    {
+      name: "veg~u_veg_auto_qa_shaft_points"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        get_points("veg_qa",self,1m,"veg")
+        '''
+    }
+    {
+      name: "veg~u_viz_wind_direction"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        viz("arrow",
+            vec3(u_wind_direction_vector,(top_z)),
+            vec3(location,top_z),
+        )
+        '''
+    }
+    {
+      name: "veg~u_wind_direction_vector"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        vec2(
+          location.x + sin(model().u_cust_env_wind_direction_radians)*model().u_cust_env_wind_magnitude_factor*unit("m"),
+          location.y + cos(model().u_cust_env_wind_direction_radians)*model().u_cust_env_wind_magnitude_factor*unit("m"),
+        )
+        '''
+    }
+  ]
+}

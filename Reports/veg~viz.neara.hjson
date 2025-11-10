@@ -1,0 +1,378 @@
+{
+  id: "2d1a2a4c4a34fa742bd9017"
+  title: "veg~viz"
+  description: null
+  root: "Model"
+  favorite: false
+  editable_data: true
+  export_column_header_type: "field_title"
+  table: {
+    query: {
+      queries: [
+        {
+          collection: "Spans"
+          filter: {
+            conditions: []
+            bounds_filter: "none"
+            quick_search: null
+          }
+        }
+      ]
+      sort: {
+        fields: []
+      }
+      page_size: 300
+      offset: 0
+    }
+    fields: [
+      {
+        name: "veg~u_gis_layer"
+        title: "Gis Layer"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 138
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_viz_span_encroachments"
+        title: "Viz Span Encroachments"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 147
+        quicksearch: false
+        search_option: "none"
+        show_spatial: true
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_viz_custom_env"
+        title: "Viz Custom Env"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 138
+        quicksearch: false
+        search_option: "none"
+        show_spatial: true
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_viz_wind_sweep_body"
+        title: "Viz Wind Sweep Body"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 138
+        quicksearch: false
+        search_option: "none"
+        show_spatial: true
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_viz_wind_sweep_cables"
+        title: "Viz Wind Sweep Cables"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 138
+        quicksearch: false
+        search_option: "none"
+        show_spatial: true
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_viz_fall_in_arcs"
+        title: "Viz Fall In Arcs"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 138
+        quicksearch: false
+        search_option: "none"
+        show_spatial: true
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_viz_p1_body"
+        title: "Viz P1 Body"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 138
+        quicksearch: false
+        search_option: "none"
+        show_spatial: true
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_viz_p2_body"
+        title: "Viz P2 Body"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 138
+        quicksearch: false
+        search_option: "none"
+        show_spatial: true
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_viz_p3_body"
+        title: "Viz P3 Body"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 138
+        quicksearch: false
+        search_option: "none"
+        show_spatial: true
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_viz_p4_body"
+        title: "Viz P4 Body"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 138
+        quicksearch: false
+        search_option: "none"
+        show_spatial: true
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_viz_p1_points"
+        title: "Viz P1 Points"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 138
+        quicksearch: false
+        search_option: "none"
+        show_spatial: true
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_viz_p2_points"
+        title: "Viz P2 Points"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 138
+        quicksearch: false
+        search_option: "none"
+        show_spatial: true
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_viz_p3_points"
+        title: "Viz P3 Points"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 138
+        quicksearch: false
+        search_option: "none"
+        show_spatial: true
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_viz_p4_points"
+        title: "Viz P4 Points"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 138
+        quicksearch: false
+        search_option: "none"
+        show_spatial: true
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "veg~u_viz_oh_points"
+        title: "Viz Oh Points"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 138
+        quicksearch: false
+        search_option: "none"
+        show_spatial: true
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "stack.veg~u_veg_auto_qa_points"
+        title: "Stack Veg Auto Qa Points"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 140
+        quicksearch: false
+        search_option: "none"
+        show_spatial: true
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+    ]
+  }
+  views: []
+  visibility: {
+    visibility: "external"
+    org_id: null
+  }
+  viz_config: {
+    visualizing: false
+    visualizing_quick_toggle: true
+    visualizing_pinned: false
+    color3d_objects: false
+    visualize_on_world_terrain: false
+    world_geom_source: false
+    elevation_geom_source: null
+    default_color: {
+      r: 1
+      g: 0
+      b: 0
+      a: 1
+    }
+    threshold: 5
+    overlay_min_zoom: 0
+    overlay_max_zoom: 23
+    interactive_terrain_visualization: false
+  }
+  local_mode: true
+  global_enabled: false
+  global_search_enabled: false
+  properties: {}
+}

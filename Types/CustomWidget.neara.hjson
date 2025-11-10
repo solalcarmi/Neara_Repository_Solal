@@ -1,0 +1,279 @@
+{
+  token: "CustomWidget"
+  is_custom_class: false
+  fields: [
+    {
+      name: "veg~u_analytic_reports"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        ui_panel("Report View Settings",
+          ui_properties_panel(key_column_size: "small",
+            ui_properties_row("Select View", model().u_select_analytics_report),  
+        //    ui_properties_row("Enchroachment", ui_input_check(model().u_veg_analytics_report_ench,"visualized")),
+        //    ui_properties_row("Fall-in", ui_input_check(model().u_veg_analytics_report_fir,"visualized")),
+        //    ui_properties_row("Fall-in w/o Enchroachment", ui_input_check(model().u_veg_analytics_report_fir_no_ench,"visualized")),
+          ),
+          model().u_analytics_report_activation,
+          if(
+            any(model().u_veg_analytics_report_ench.visualized,model().u_veg_analytics_report_fir.visualized,model().u_veg_analytics_report_fir_no_ench.visualized),
+              ui_panel("","Filters",
+              ui_properties_panel(key_column_size: "small",
+                ui_properties_row("District", model().u_filter_district_select),
+                ui_properties_row("Feeder", model().u_filter_feeder_select),
+                ui_properties_row("Voltage", model().u_filter_voltage_select),
+                ui_properties_row("Year", model().u_filter_year_select),
+        
+              ), 
+            )
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_custom_env"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        ui_panel("Custom Environment",
+          ui_properties_panel(key_column_size: "small",
+            ui_properties_row( "Enable Custom Env", ui_input_switch(model(),"u_enable_custom_env")), 
+            ui_properties_row( "Wire Temperature", ui_input_slider(model(),"u_cust_env_temp_wire",min: unit_value(0,"fahrenheit"),max: unit_value(180,"fahrenheit"), step: unit_value(1,"deltaF"))),
+            ui_properties_row( "Wind Pressure", ui_input_slider(model(),"u_cust_env_wind_pressure",min: 0Pa,max: 1000Pa, step: 5Pa)),
+            ui_properties_row( "Wind Direction", ui_input_slider(model(),"u_cust_env_wind_direction",min: 0, max: 360, step: 1)),
+            ui_properties_row( "Show Wind", ui_input_check(model(),"u_show_wind_direction")),
+        
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_encroachment_bodies"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        ui_panel("Encroachment Bodies",
+          ui_properties_panel(key_column_size: "medium",
+         
+          ui_properties_row("Clearance zones",ui_input_check(model(),"u_show_encroachment_bodies")), 
+          
+          if(
+           model().u_show_encroachment_bodies,
+           model().u_select_encroachment_key_body
+           )   
+         )
+        )
+        '''
+    }
+    {
+      name: "veg~u_encroachment_measurements"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        ui_panel("Encroachment Measurements",
+          ui_properties_panel(key_column_size: "medium",
+            ui_properties_row("Encroachment Measurements",ui_input_check(model(),"u_show_encroachment_measurements")), 
+          
+          if(
+           model().u_show_encroachment_measurements,
+           model().u_select_encroachment_key_measurement
+           ), 
+           
+         )
+        )
+        '''
+    }
+    {
+      name: "veg~u_point_cloud_colouring"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        ui_panel("Model View Settings",
+         
+          ui_properties_panel(key_column_size: "large",
+            ui_properties_row("Fall in arcs",ui_input_check(model(),"u_show_fall_in_arcs")), 
+            ui_properties_row("Color veg encroachments",ui_input_check(model(),"u_show_veg_pc_colouring_encroachments")), 
+           if(
+             model().u_show_veg_pc_colouring_encroachments,
+             model().u_select_encroachment_key_pc_colour
+             ),
+          
+            ui_properties_row("Encroachment Measurements",ui_input_check(model(),"u_show_encroachment_measurements")),
+            if(
+             model().u_show_encroachment_measurements,
+             model().u_select_encroachment_key_measurement
+             ), 
+          
+            ui_properties_row("Clearance zones",ui_input_check(model(),"u_show_encroachment_bodies")),
+            
+            if(
+              and(len(model().u_selected_spans) = 1,model().u_show_encroachment_bodies),
+              model().u_select_encroachment_key_body,
+              and(len(model().u_selected_spans) <> 1,model().u_show_encroachment_bodies),
+              ui_panel("","⚠️ select single span in perspective view to visualise encroachment zone"),
+            )  
+          )
+        )
+        /*
+        /*
+          "Unselected Vegetation Points",
+          ui_mixed(
+            ui_button("Show", do(model().u_point_cloud_layer_veg[].u_action_show)), " ",
+            ui_button("Hide", do(model().u_point_cloud_layer_veg[].u_action_hide), mode: "secondary")    
+            )
+        */
+        '''
+    }
+    {
+      name: "veg~u_rate_span"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        ui_panel("Rate Span",
+          ui_properties_panel(key_column_size: "small",
+            ui_properties_row( "Enable Rate Span", ui_input_switch(model(),"u_enable_rate_span")), 
+            ui_properties_row( "Base Environment", model().u_select_base_environment),
+            ui_properties_row( "Max Wind", ui_input_slider(model(),"u_max_wind_pressure",min: 0Pa, max: 1500Pa, step: 50Pa)),
+            ui_properties_row( "Veg Distance Threshold", ui_input_slider(model(),"u_rate_span_veg_dist",min: 0cm, max: 100cm, step: 0.5cm)), 
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_selected_span_details"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        ui_panel("Span Details",
+          if(  
+            len(model().u_selected_spans) <> 1,
+            ui_panel("","Select single span to view details"),
+            
+            ui_panel("",
+            model().u_selected_span.u_ui_span_clearance_details,
+        //    u_encroachment_bodies,
+            ),
+        
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_user_panel"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        ui_tabs(
+            ui_tab("Veg Encroachments",
+            ui_panel("",
+              u_view_settings,
+        //      u_encroachment_measurements,
+        //      u_selected_span_details,
+        //      u_selected_span_details,
+              u_analytic_reports,
+              
+            )),
+              ui_tab("Veg Engineering",
+                u_user_panel_eng
+                       
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_user_panel_eng"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        ui_panel("",
+          u_custom_env,
+        //  u_rate_span,
+          u_wind_sweep_body,
+        )
+        '''
+    }
+    {
+      name: "veg~u_view_settings"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        ui_panel("View Settings",
+         
+          ui_properties_panel(key_column_size: "large",
+            ui_properties_row("Color veg encroachments",ui_input_check(model(),"u_show_veg_pc_colouring_encroachments")), 
+           if(
+             model().u_show_veg_pc_colouring_encroachments,
+             model().u_select_encroachment_key_pc_colour
+             ),
+          
+            ui_properties_row("Encroachment Measurements",ui_input_check(model(),"u_show_encroachment_measurements")),
+            if(
+             model().u_show_encroachment_measurements,
+             model().u_select_encroachment_key_measurement
+             ), 
+          
+            ui_properties_row("Clearance zones",ui_input_check(model(),"u_show_encroachment_bodies")),
+            
+            if(
+              and(len(model().u_selected_spans) = 1,model().u_show_encroachment_bodies),
+              model().u_select_encroachment_key_body,
+              and(len(model().u_selected_spans) <> 1,model().u_show_encroachment_bodies),
+              ui_panel("","⚠️ select single span in perspective view to visualise encroachment zone"),
+            ),
+            
+            ui_properties_row("Fall in arcs",ui_input_check(model(),"u_show_fall_in_arcs")), 
+              
+          )
+        )
+        '''
+    }
+    {
+      name: "veg~u_wind_sweep_body"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        ui_panel("Sweep Body",
+          ui_properties_panel(key_column_size: "small",
+            ui_properties_row("Enable Wind Sweep",ui_input_switch(model(),"u_show_wind_sweep_body")),
+          
+            ui_properties_row("Temperature",ui_input_slider(model(),"u_temperature",min: unit_value(0,"fahrenheit"),max: unit_value(120,"fahrenheit"), step: unit_value(1,"deltaF"))),
+            ui_properties_row("Wind Pressure",ui_input_slider(model(),"u_wind_pressure",min: 0Pa,max: 1000Pa, step: 5Pa))
+          )
+        )
+        '''
+    }
+  ]
+}

@@ -1,0 +1,373 @@
+{
+  id: "a17f93f0ee587c32635ccddd"
+  title: "veg~Tree"
+  description: null
+  root: "Model"
+  favorite: false
+  editable_data: true
+  export_column_header_type: "field_title"
+  table: {
+    query: {
+      queries: [
+        {
+          collection: "veg~u_trees"
+          filter: {
+            conditions: []
+            bounds_filter: "none"
+            quick_search: null
+          }
+        }
+      ]
+      sort: {
+        fields: []
+      }
+      page_size: 300
+      offset: 0
+    }
+    fields: [
+      {
+        name: "tree_id"
+        title: "Tree Id"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 168
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "fir_tree"
+        title: "Fir Tree"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 168
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "encroachment_key"
+        title: "Encroachment Key"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 209
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: [
+              {
+                field_value: ""
+                color: "#FF0000"
+              }
+            ]
+          }
+        }
+      }
+      {
+        name: "has_nearby_bay"
+        title: "Has Nearby Bay"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 168
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "nearest_bay_dist"
+        title: "Nearest Bay Dist 2D"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 168
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "tree_loc.y"
+        title: "Tree Loc Y"
+        unit: null
+        decimal_places: 4
+        null_value: ""
+        cell_title: null
+        width_px: 168
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "tree_loc.x"
+        title: "Tree Loc X"
+        unit: null
+        decimal_places: 4
+        null_value: ""
+        cell_title: null
+        width_px: 168
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "affected_tree_height"
+        title: "Affected Tree Height"
+        unit: "ft"
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 168
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "prune_zone_key"
+        title: "Prune Zone Status"
+        unit: null
+        decimal_places: 2
+        null_value: "Clear"
+        cell_title: null
+        width_px: 168
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: true
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: [
+              {
+                field_value: "P1"
+                color: "#FF0000"
+              }
+              {
+                field_value: "P2"
+                color: "#FF8000"
+              }
+              {
+                field_value: "P3"
+                color: "#FFFF00"
+              }
+              {
+                field_value: "P4"
+                color: "#00FF00"
+              }
+              {
+                field_value: "Clear"
+                color: "#00FF00"
+              }
+            ]
+          }
+        }
+      }
+      {
+        name: "p1_points.num_points"
+        title: "P1 Points Num Points"
+        unit: null
+        decimal_places: 2
+        null_value: "Clear"
+        cell_title: null
+        width_px: 168
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "color_gradient"
+          color_gradient: {
+            points: [
+              {
+                field_value: 0
+                color: "#00ff00"
+              }
+              {
+                field_value: 0
+                color: "#ff0000"
+              }
+            ]
+          }
+        }
+      }
+      {
+        name: "p2_points.num_points"
+        title: "P2 Points Num Points"
+        unit: null
+        decimal_places: 2
+        null_value: "Clear"
+        cell_title: null
+        width_px: 168
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "p3_points.num_points"
+        title: "P3 Points Num Points"
+        unit: null
+        decimal_places: 2
+        null_value: "Clear"
+        cell_title: null
+        width_px: 168
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "p4_points.num_points"
+        title: "P4 Points Num Points"
+        unit: null
+        decimal_places: 2
+        null_value: "Clear"
+        cell_title: null
+        width_px: 168
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: ""
+        title: ""
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 120
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+    ]
+  }
+  views: []
+  visibility: {
+    visibility: "external"
+    org_id: null
+  }
+  viz_config: {
+    visualizing: true
+    visualizing_quick_toggle: true
+    visualizing_pinned: false
+    color3d_objects: true
+    visualize_on_world_terrain: true
+    world_geom_source: false
+    elevation_geom_source: null
+    default_color: {
+      r: 0
+      g: 1
+      b: 0
+      a: 1
+    }
+    threshold: 5
+    overlay_min_zoom: 0
+    overlay_max_zoom: 23
+    interactive_terrain_visualization: false
+  }
+  local_mode: false
+  global_enabled: true
+  global_search_enabled: false
+  properties: {}
+}
