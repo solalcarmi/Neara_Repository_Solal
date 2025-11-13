@@ -829,7 +829,7 @@
     {
       name: "veg~u_viz_oh_dynamic_points"
       prominence: "normal"
-      documentation: overhead points viz parameters when using a dynamic environment
+      documentation: overhead points viz parameters when using a dynamic environment // check
       visibility: "public"
       type: "formula"
       formula:
