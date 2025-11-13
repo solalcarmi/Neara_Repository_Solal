@@ -2,7 +2,7 @@
   id: "762834d355c704ee42866f5"
   key: "veg~veg_clearance_rules"
   token: "h"
-  type: "4a8de0a987ed19534c5754c"
+  type: "4a8de0a987ed19534c5754c" // check
   type_key: "veg~SetUpVegClearanceRules"
   data:
     '''
