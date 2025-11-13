@@ -1,0 +1,167 @@
+{
+  token: "veg~ct_BayVegSections"
+  is_custom_class: true
+  fields: [
+    {
+      name: "bay_section"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "index(model().SpanStacks[].u_bay_sections,-1)"
+    }
+    {
+      name: "colour"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "map_lookup(model().u_map_veg_section_colours,index)"
+    }
+    {
+      name: "geom"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "geo_point(vec2(0,0)*1m + vec2(origin()))"
+    }
+    {
+      name: "index"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        bay_section.index &"_"& index_of(bay_section.veg_sections,self)
+        '''
+    }
+    {
+      name: "points_veg"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        categorize_volume(volume,index&"veg","veg")
+        '''
+    }
+    {
+      name: "points_veg_partitioned_by_dataset"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        make_immutable_record(
+          "BayVegSectionsPartitioned",
+          veg_section: not_null(self),
+          points_a: intersect_points(points_veg,index(span_stack.u_points_veg_partitioned_by_dataset,0),"veg_a"),
+          points_b: intersect_points(points_veg,index(span_stack.u_points_veg_partitioned_by_dataset,1),"veg_b"),
+        
+        )
+        /*
+        
+        
+        intersect_points(points_veg,index(span_stack.u_points_veg_partitioned_by_dataset,0),"veg_a")
+        '''
+    }
+    {
+      name: "report_global_id"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        index &"_"& span_stack.global_pole1.id &"-"&span_stack.global_pole2.id
+        '''
+    }
+    {
+      name: "side"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+         index_of(bay_section.veg_sections,self) = 0, "a","b"
+        )
+        '''
+    }
+    {
+      name: "span_stack"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "index(model().SpanStacks,-1)"
+    }
+    {
+      name: "veg_in_section"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "points_veg.num_points > 0"
+    }
+    {
+      name: "viz_body1"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        let(
+          height: max(span_stack.pole1.top_z,span_stack.pole2.top_z) + 10m,
+          color: colour,
+          transp: 99,
+            
+          transform_body(
+            index(load_bodies(geom, color: color&transp), 0),
+            translation:  vec3(0m, 0m, height - origin().z)),
+         
+        )
+        '''
+    }
+    {
+      name: "viz_body2"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        let(
+          polygon: geom,
+          color: colour,  //#08fce4 39fc0350
+          transp: 99,
+          height: (max(span_stack.pole1.top_z,span_stack.pole2.top_z) + 10m) - origin().z,  
+          let(
+            translation: vec3(0m, 0m, height - (height +100m)),
+        
+             transform_body(
+              index(load_bodies(polygon,
+                color: color&transp,
+                extrude_geometry: (height +100m) + 0), 0),
+                translation: translation,
+              )
+          )
+        )
+        '''
+    }
+    {
+      name: "volume"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "polygon_to_volume(geom,false,200m,200m)"
+    }
+  ]
+}

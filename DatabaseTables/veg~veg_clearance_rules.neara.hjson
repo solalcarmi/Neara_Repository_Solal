@@ -1,0 +1,15 @@
+{
+  id: "56beb22bb9c3bde6d75fe6c"
+  key: "veg~veg_clearance_rules"
+  token: "h"
+  type: "83b2efe2151bc1ed59431"
+  type_key: "veg~SetUpVegClearanceRules"
+  data:
+    '''
+    voltage_key,class_key,span_length_lower_limit,span_length_upper_limit,clearance_radial_ends,clearance_radial_middle,clearance_above,clearance_below,bushfire_factor,clearance_ends,clearance_middle
+    Lv,Bare,0.00,5000.00,10.00,10.00,0.00,0.00,0.00,0.00,0.00
+    Lv,Covered,0.00,5000.00,10.00,10.00,0.00,0.00,0.00,0.00,0.00
+    Hv,Bare,0.00,5000.00,10.00,10.00,0.00,0.00,0.00,0.00,0.00
+    Hv,Covered,0.00,5000.00,10.00,10.00,0.00,0.00,0.00,0.00,0.00
+    '''
+}

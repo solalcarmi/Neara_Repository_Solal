@@ -1,0 +1,86 @@
+{
+  token: "veg~ct_BayVegSectionsPartitioned"
+  is_custom_class: true
+  fields: [
+    {
+      name: "dataset_a"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "points_a.u_first_dataset"
+    }
+    {
+      name: "dataset_b"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "points_b.u_first_dataset"
+    }
+    {
+      name: "points_a"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "combine_points(list())"
+    }
+    {
+      name: "points_b"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "combine_points(list())"
+    }
+    {
+      name: "report_global_id"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "veg_section.report_global_id"
+    }
+    {
+      name: "span_stack"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "index(model().SpanStacks,-1)"
+    }
+    {
+      name: "timestamp_a"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "points_a.time_range.start"
+    }
+    {
+      name: "timestamp_b"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "points_b.time_range.start"
+    }
+    {
+      name: "timestamp_delta"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "timestamp_a - timestamp_b"
+    }
+    {
+      name: "veg_section"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "index(model().u_veg_sections,-1)"
+    }
+  ]
+}

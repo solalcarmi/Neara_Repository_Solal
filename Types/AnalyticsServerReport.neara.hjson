@@ -1,0 +1,22 @@
+{
+  token: "AnalyticsServerReport"
+  is_custom_class: false
+  fields: [
+    {
+      name: "veg~u_visualize_off"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "make_field_mutation(self,visualized: false)"
+    }
+    {
+      name: "veg~u_visualize_on"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "make_field_mutation(self,visualized: true)"
+    }
+  ]
+}

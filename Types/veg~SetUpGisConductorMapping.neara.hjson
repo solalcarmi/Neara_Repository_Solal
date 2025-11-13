@@ -1,0 +1,36 @@
+{
+  token: "veg~ct_SetUpGisConductorMapping"
+  is_custom_class: true
+  fields: [
+    {
+      name: "check"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        find(
+          model().ConductorLibrary[].veg~u_veg_management_cond_type,
+          model().ConductorLibrary[].label = library_label
+        )
+        '''
+    }
+    {
+      name: "gis_known_as"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "library_label"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "text"
+    }
+  ]
+}

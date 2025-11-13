@@ -1,0 +1,103 @@
+{
+  token: "veg~ct_ClearanceRulesRead"
+  is_custom_class: true
+  fields: [
+    {
+      name: "bushfire_factor"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "real"
+      unit: "m"
+    }
+    {
+      name: "clearance_above"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "real"
+      unit: "m"
+    }
+    {
+      name: "clearance_below"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "real"
+      unit: "m"
+    }
+    {
+      name: "clearance_ends"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "real"
+      unit: "m"
+    }
+    {
+      name: "clearance_middle"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "real"
+      unit: "m"
+    }
+    {
+      name: "clearance_radial_ends"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "real"
+      unit: "m"
+    }
+    {
+      name: "clearance_radial_middle"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "real"
+      unit: "m"
+    }
+    {
+      name: "conductor_key"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "index"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "integer"
+    }
+    {
+      name: "span_length_lower_limit"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "real"
+      unit: "m"
+    }
+    {
+      name: "span_length_upper_limit"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "property"
+      kind: "real"
+      unit: "m"
+    }
+  ]
+}

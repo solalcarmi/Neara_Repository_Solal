@@ -1,0 +1,39 @@
+{
+  token: "veg~ct_PLAReport"
+  is_custom_class: true
+  fields: [
+    {
+      name: "pole_id"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        get_prop(properties,"global_id","text")
+        '''
+    }
+    {
+      name: "pole_util"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        get_prop(properties,"oncor~u_250b_hvy_c_utilization_after_derating","real")
+        '''
+    }
+    {
+      name: "properties"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        index(fetch_analytics_report("",dataset_id: ""),-1)
+        '''
+    }
+  ]
+}

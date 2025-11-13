@@ -1,0 +1,22 @@
+{
+  token: "veg~ct_BayTrees"
+  is_custom_class: true
+  fields: [
+    {
+      name: "span_stack"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "index(model().SpanStacks,-1)"
+    }
+    {
+      name: "tree"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "index(model().u_trees,-1)"
+    }
+  ]
+}

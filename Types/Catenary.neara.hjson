@@ -1,0 +1,28 @@
+{
+  token: "Catenary"
+  is_custom_class: false
+  fields: [
+    {
+      name: "veg~u_ends"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        flatten(list(
+          slice_catenaries(self,start_ratio:0,end_ratio:1/6),
+          slice_catenaries(self,start_ratio:5/6,end_ratio:1)
+        ))
+        '''
+    }
+    {
+      name: "veg~u_middle"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "slice_catenaries(self,start_ratio:1/6,end_ratio:5/6)"
+    }
+  ]
+}

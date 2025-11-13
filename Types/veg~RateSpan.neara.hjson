@@ -1,0 +1,107 @@
+{
+  token: "veg~ct_RateSpan"
+  is_custom_class: true
+  fields: [
+    {
+      name: "base_env"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        model().u_selected_base_environment_lookup/*
+        index(model().Environments,0)
+        '''
+    }
+    {
+      name: "blowout"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "rate_span.blowout_distance"
+    }
+    {
+      name: "geom"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "span.geometry"
+    }
+    {
+      name: "rate_span"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+          combine_points(list(span.u_veg_environment.u_p1_points,span.u_veg_environment.u_p2_points)).num_points > 0, //,span.u_veg_environment.u_vp2_points)),  
+          //only evaluate if there is close veg. Add vp2_points as required 
+          rate_span(
+            simulate(span,environment:base_env),
+            "u_rate_span_criteria_veg_dist",
+            vary: "wind",
+            wind_pressure_increment: 20Pa,
+            max_wind_pressure: model().u_max_wind_pressure,
+          )
+        )
+        '''
+    }
+    {
+      name: "span"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "index(model().Spans,-1)"
+    }
+    {
+      name: "viz"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula:
+        '''
+        let(
+          c1: if(rate_span.environment.weather.wind_pressure_cond < model().u_max_wind_pressure, "red", "purple"),
+          wind_suff: if(rate_span.environment.weather.wind_pressure_cond = model().u_max_wind_pressure, " (Max)"),
+        
+          viz(list(
+            viz("style", "bg_color:white font_size:15 solid width:0.05 "&c1,
+              list(
+                viz(rate_span.Cables[].catenary),
+                viz("text",span.approximate_midpoint,
+                  "Wind: " & text_unit(rate_span.environment.weather.wind_pressure_cond,"Pa",2) & wind_suff & "\n" &
+                  "Blowout Dist: "  & text_unit(rate_span.blowout_distance,"m",2) & "\n" &
+                  "Veg Dist: "  & text_unit(rate_span.u_veg_dist.distance,"m",2) 
+               ))),
+        
+            viz("style", "bg_color:white font_size:15 solid width:0.05 grey",
+              list(
+                viz("line", rate_span.u_veg_dist.start,rate_span.u_veg_dist.end),
+                viz("text", rate_span.u_veg_dist.start + (rate_span.u_veg_dist.end - rate_span.u_veg_dist.start)*0.5,
+                  text_unit(rate_span.u_veg_dist.distance,"m",2)
+                  ) 
+                
+                )   
+              )
+            )
+          )
+        )
+        '''
+    }
+    {
+      name: "wind_pressure"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "rate_span.environment.weather.wind_pressure_cond"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  id: "2b3199f632d2a5628e2c7f82"
+  name: "veg~View Settings"
+  is_tab_panel: true
+  formula: "veg~u_user_panel"
+  is_favourite: false
+  properties: {
+    veg~u_selected_analytic_report: ""
+  }
+}

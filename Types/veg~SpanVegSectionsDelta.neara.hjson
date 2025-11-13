@@ -1,0 +1,460 @@
+{
+  token: "veg~ct_SpanVegSectionsDelta"
+  is_custom_class: true
+  fields: [
+    {
+      name: "cables"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "span.u_veg_environment.Cables"
+    }
+    {
+      name: "change_rate"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        //un-dimensionising the variables to produce
+        //more human readable uom (eg mm per year)
+        let(
+          time_delta: timestamp_delta/(1s), //seconds
+          dist_delta: dist_delta/(1mm), //milimeters
+        
+          if(
+            and(dist_delta,timestamp_delta), //evaluate only if both exist
+            
+            dist_delta / 
+            (time_delta / (60*60*24)) //convert to mm/day
+          )
+        )
+        '''
+    }
+    {
+      name: "dataset_a"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "veg_section_partitioned.dataset_a"
+    }
+    {
+      name: "dataset_b"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "veg_section_partitioned.dataset_b"
+    }
+    {
+      name: "delta_status"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+          or(dist_a = null, dist_b = null), "no_data",
+          dist_delta > 0m, "grow-in",
+          dist_delta < 0m, "recede"
+        )
+        '''
+    }
+    {
+      name: "dist_a"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "measure_distance(cables,points_a)"
+    }
+    {
+      name: "dist_b"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "measure_distance(cables,points_b)"
+    }
+    {
+      name: "dist_delta"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+          and(dist_a,dist_b),
+          dist_b.distance - dist_a.distance
+        )
+        '''
+    }
+    {
+      name: "dist_to_buffer1"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+          dist_a.distance > (required_clearance + try(model().u_buffer_zone_increment, 0.5m)*1),
+          dist_a.distance - (required_clearance + try(model().u_buffer_zone_increment, 0.5m)*1),
+        )
+        '''
+    }
+    {
+      name: "dist_to_buffer2"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+          dist_a.distance > (required_clearance + try(model().u_buffer_zone_increment, 0.5m)*2),
+          dist_a.distance - (required_clearance + try(model().u_buffer_zone_increment, 0.5m)*2),
+        )
+        '''
+    }
+    {
+      name: "dist_to_buffer3"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+          dist_a.distance > (required_clearance + try(model().u_buffer_zone_increment, 0.5m)*3),
+          dist_a.distance - (required_clearance + try(model().u_buffer_zone_increment, 0.5m)*3),
+        )
+        '''
+    }
+    {
+      name: "dist_to_p1"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+          dist_a.distance > required_clearance*.1,
+          dist_a.distance - required_clearance*.1
+        )
+        '''
+    }
+    {
+      name: "dist_to_p2"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+          dist_a.distance > required_clearance*.7,
+          dist_a.distance - required_clearance*.7
+        )
+        '''
+    }
+    {
+      name: "dist_to_p3"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+          dist_a.distance > required_clearance,
+          dist_a.distance - required_clearance
+        )
+        '''
+    }
+    {
+      name: "encroachment_a"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+          intersect_points(points_a,span.u_veg_environment.u_p1_points).num_points > 0, "VP1",
+          intersect_points(points_a,span.u_veg_environment.u_p2_points).num_points > 0, "VP2",
+          intersect_points(points_a,span.u_veg_environment.u_p3_points).num_points > 0, "VP3",
+          intersect_points(points_a,span.u_veg_environment.u_buffer1_points).num_points > 0, "Buffer1",
+          intersect_points(points_a,span.u_veg_environment.u_buffer2_points).num_points > 0, "Buffer2",
+          intersect_points(points_a,span.u_veg_environment.u_buffer3_points).num_points > 0, "Buffer3",
+          
+        //  intersect_points(points_a,span.u_veg_environment.u_points_oh_veg).num_points > 0, "OH",
+        )
+        '''
+    }
+    {
+      name: "encroachment_b"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+          intersect_points(points_b,span.u_veg_environment.u_p1_points).num_points > 0, "VP1",
+          intersect_points(points_b,span.u_veg_environment.u_p2_points).num_points > 0, "VP2",
+          intersect_points(points_b,span.u_veg_environment.u_p3_points).num_points > 0, "VP3",
+          intersect_points(points_b,span.u_veg_environment.u_buffer1_points).num_points > 0, "Buffer1",
+          intersect_points(points_b,span.u_veg_environment.u_buffer2_points).num_points > 0, "Buffer2",
+          intersect_points(points_b,span.u_veg_environment.u_buffer3_points).num_points > 0, "Buffer3",
+          
+        //  intersect_points(points_a,span.u_veg_environment.u_points_oh_veg).num_points > 0, "OH",
+        )
+        '''
+    }
+    {
+      name: "encroachment_delta"
+      prominence: "normal"
+      documentation: "Delta in encroachments between dataset a and dataset b. A positive number indicates that dataset a's encroachment is more severe than dataset b"
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        let(
+          encroach_prio: map("P1", 6, "P2", 5, "P3", 4, "Budffer1", 3, "Budffer2", 2, "Budffer3", 1),
+        
+          if(
+            and(encroachment_a = null, encroachment_b = null), null,
+            map_lookup(encroach_prio,encroachment_b) - map_lookup(encroach_prio,encroachment_a)   
+          )&"" 
+        )
+        '''
+    }
+    {
+      name: "location_in_span"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        if(
+          dist_a = null, null,
+          or(
+           (vec2(dist_a.start) - span.pole1.location).norm <= span.length/6,
+           (vec2(dist_a.start) - span.pole2.location).norm <= span.length/6 
+          ),
+          "first 1/6th","middle 2/3rd"
+        )
+        '''
+    }
+    {
+      name: "points_a"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "veg_section_partitioned.points_a"
+    }
+    {
+      name: "points_b"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "veg_section_partitioned.points_b"
+    }
+    {
+      name: "required_clearance"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        span.u_required_clearance
+        
+        
+        /*
+        if(
+         location_in_span = "first 1/6th", span.u_required_clearance_details.clearance_radial_ends + span.u_bushfire_clearance_factor,
+         location_in_span = "middle 2/3rd", span.u_required_clearance_details.clearance_radial_middle + span.u_bushfire_clearance_factor
+        )
+        '''
+    }
+    {
+      name: "span"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "index(model().Spans,-1)"
+    }
+    {
+      name: "time_to_buffer1"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        let(
+          dist_mm: dist_to_buffer1 / (1mm), // mm
+          change_rate: change_rate, //mm/day
+          if(
+            or(encroachment_a = "P2",encroachment_a = "P3",encroachment_a = "Buffer1"), 0,
+            and(change_rate,dist_to_p3,dist_delta > 0m), //evaluate only for grow-in veg
+            
+            round(dist_mm / change_rate)
+          )
+        )
+        '''
+    }
+    {
+      name: "time_to_buffer2"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        let(
+          dist_mm: dist_to_buffer2 / (1mm), // mm
+          change_rate: change_rate, //mm/day
+          if(
+            or(encroachment_a = "P2",encroachment_a = "P3",encroachment_a = "Buffer1",encroachment_a = "Buffer2"), 0,
+            and(change_rate,dist_to_p3,dist_delta > 0m), //evaluate only for grow-in veg
+            
+            round(dist_mm / change_rate)
+          )
+        )
+        '''
+    }
+    {
+      name: "time_to_buffer3"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        let(
+          dist_mm: dist_to_buffer3 / (1mm), // mm
+          change_rate: change_rate, //mm/day
+          if(
+            or(encroachment_a = "P2",encroachment_a = "P3",encroachment_a = "Buffer1",encroachment_a = "Buffer2",encroachment_a = "Buffer3"), 0,
+            and(change_rate,dist_to_p3,dist_delta > 0m), //evaluate only for grow-in veg
+            
+            round(dist_mm / change_rate)
+          )
+        )
+        '''
+    }
+    {
+      name: "time_to_p1"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        let(
+          dist_mm: dist_to_p1 / (1mm), // mm
+          change_rate: change_rate, //mm/day
+          if(
+            encroachment_a = "P1", 0,
+            and(change_rate,dist_to_p1,dist_delta > 0m), //evaluate only for grow-in veg
+            
+            round(dist_mm / change_rate)
+          )
+        )
+        '''
+    }
+    {
+      name: "time_to_p2"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        let(
+          dist_mm: dist_to_p2 / (1mm), // mm
+          change_rate: change_rate, //mm/day
+          if(
+            encroachment_a = "P2", 0,
+            and(change_rate,dist_to_p2,dist_delta > 0m), //evaluate only for grow-in veg
+            
+            round(dist_mm / change_rate)
+          )
+        )
+        '''
+    }
+    {
+      name: "time_to_p3"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula:
+        '''
+        let(
+          dist_mm: dist_to_p3 / (1mm), // mm
+          change_rate: change_rate, //mm/day
+          if(
+            or(encroachment_a = "P2",encroachment_a = "P3"), 0,
+            and(change_rate,dist_to_p3,dist_delta > 0m), //evaluate only for grow-in veg
+            
+            round(dist_mm / change_rate)
+          )
+        )
+        '''
+    }
+    {
+      name: "timestamp_a"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "veg_section_partitioned.timestamp_a"
+    }
+    {
+      name: "timestamp_b"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "veg_section_partitioned.timestamp_b"
+    }
+    {
+      name: "timestamp_delta"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "veg_section_partitioned.timestamp_delta"
+    }
+    {
+      name: "veg_section"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "veg_section_partitioned.veg_section"
+    }
+    {
+      name: "veg_section_partitioned"
+      prominence: "normal"
+      documentation: null
+      visibility: "module"
+      type: "formula"
+      formula: "index(model().u_veg_sections_partitioned,-1)"
+    }
+  ]
+}

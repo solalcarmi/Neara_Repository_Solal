@@ -1,0 +1,81 @@
+{
+  token: "veg~ct_SetUpDefectClassifications"
+  is_custom_class: true
+  fields: [
+    {
+      name: "buffer_increment"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "real"
+      unit: "m"
+    }
+    {
+      name: "buffer_zone"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "boolean"
+    }
+    {
+      name: "color"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "description"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "encroachment_key"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "text"
+    }
+    {
+      name: "lower_limit"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "real"
+      unit: ""
+    }
+    {
+      name: "point_cloud_class"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "integer"
+    }
+    {
+      name: "priority"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "integer"
+    }
+    {
+      name: "upper_limit"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "property"
+      kind: "real"
+      unit: ""
+    }
+  ]
+}

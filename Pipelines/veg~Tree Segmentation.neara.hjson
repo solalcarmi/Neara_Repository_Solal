@@ -1,0 +1,139 @@
+{
+  id: "6a4996e784253ea24bf565a"
+  key: "veg~Tree Segmentation"
+  name_prefix: "Trees/"
+  variables: [
+    {
+      name: "SOURCE_DATASET"
+      title: ""
+      type: {
+        kind: "dataset"
+        dataset: {
+          type: "point_cloud"
+        }
+      }
+      value: "dDfYFWEIAYcb"
+      featured: true
+    }
+    {
+      name: "DATASET_KEY"
+      title: ""
+      type: {
+        kind: "text"
+        text: {}
+      }
+      value: "Oncor2025/Treeseg"
+      featured: true
+    }
+  ]
+  stages: [
+    {
+      action: "process"
+      title: ""
+      explicit_dataset_id: ""
+      match_by_name: true
+      dataset_name_suffix: "%DATASET_KEY% - TreesegCells"
+      dataset_type: "veg_segmentation"
+      text_config:
+        '''
+        {
+          "config": {
+            "sourceDatasets": [
+              "%SOURCE_DATASET%"
+            ],
+            "cellSize": 1000,
+            "paddingSize": 50
+          },
+          "minInterTreeDistance": 4,
+          "minHeightAboveGround": 2,
+          "maxBeefupAttempts": 2,
+          "modelURL": "s3://com-neara-mlflow/90/4a637ffb8a73424a96025d5c7d91c73f/artifacts/model_19/data/model",
+          "datasetLabels": {
+            "customerProjectId": "%PROJECT_ID%"
+          }
+        }
+        '''
+      dataset_key: "CELLS"
+      enabled: false
+      sync_source: ""
+      sync_destination: ""
+      instructions: ""
+      config: null
+      source_preset_id: null
+      shared_with: "super_admin"
+    }
+    {
+      action: "process"
+      title: ""
+      explicit_dataset_id: ""
+      match_by_name: true
+      dataset_name_suffix: "%DATASET_KEY% - TreesegMerge"
+      dataset_type: "veg_segmentation_merge"
+      text_config:
+        '''
+        {
+          "config": {
+            "sourceDatasets": [
+              "%CELLS%"
+            ],
+            "cellSize": 10000000,
+            "paddingSize": 0,
+            "maxBeefupAttempts": 0,
+            "datasetLabels": {
+              "customerProjectId": "%PROJECT_ID%"
+            }
+          }
+        }
+        '''
+      dataset_key: "MERGE"
+      enabled: false
+      sync_source: ""
+      sync_destination: ""
+      instructions: ""
+      config: null
+      source_preset_id: null
+      shared_with: "super_admin"
+    }
+    {
+      action: "process"
+      title: ""
+      explicit_dataset_id: ""
+      match_by_name: true
+      dataset_name_suffix: "%DATASET_KEY% - Trees"
+      dataset_type: "geo_data"
+      text_config:
+        '''
+        {
+          "config": {
+            "sourceDatasets": [
+              "%MERGE%"
+            ],
+            "cellSize": 0,
+            "paddingSize": 0,
+            "maxBeefupAttempts": 0,
+            "datasetLabels": {
+              "customerProjectId": "%PROJECT_ID%"
+            }
+          },
+          "importType": "geoJson"
+        }
+        '''
+      dataset_key: "TREE_GEO_DATA"
+      enabled: false
+      sync_source: ""
+      sync_destination: ""
+      instructions: ""
+      config: null
+      source_preset_id: null
+      shared_with: "super_admin"
+    }
+  ]
+  cell_filter: {
+    enabled: false
+    filter: {
+      type: "none"
+      none: {}
+    }
+  }
+  type: "custom"
+}
