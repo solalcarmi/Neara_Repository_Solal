@@ -61,7 +61,7 @@
     {
       name: "veg~u_dynamic_line_rating"
       prominence: "normal"
-      documentation: null
+      documentation: add documentation
       visibility: "public"
       type: "formula"
       formula: ""
