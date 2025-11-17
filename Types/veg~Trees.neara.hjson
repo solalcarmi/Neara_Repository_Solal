@@ -236,14 +236,6 @@
       formula: "tree.veg_item"
     }
     {
-      name: "test"
-      prominence: "normal"
-      documentation: null
-      visibility: "public"
-      type: "formula"
-      formula: ""
-    }
-    {
       name: "top_tree_point"
       prominence: "normal"
       documentation: null

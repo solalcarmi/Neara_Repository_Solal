@@ -821,7 +821,7 @@
       name: "veg~u_show_fall_in_arcs"
       prominence: "normal"
       documentation: null
-      visibility: "module"
+      visibility: "public"
       type: "property"
       kind: "boolean"
     }

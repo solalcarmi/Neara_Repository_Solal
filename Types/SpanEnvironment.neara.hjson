@@ -155,9 +155,9 @@
           req_clear: span.u_required_clearance*0.25,
         
           exclude_points(
-            get_points(label,Cables,req_clear,"veg"),
-            combine_points(list(span.stack.u_veg_auto_qa_points)),
-            label
+                         get_points(label,Cables,req_clear, "veg"),
+                         combine_points(list(span.stack.u_veg_auto_qa_points)),
+                         label
           )
         )
         '''
@@ -280,6 +280,14 @@
         '''
         combine_points(list(u_p1_points,u_p2_points,u_p3_points,u_p4_points),"veg_vp")
         '''
+    }
+    {
+      name: "veg~u_pass_field"
+      prominence: "normal"
+      documentation: null
+      visibility: "public"
+      type: "formula"
+      formula: "u_veg_dist.distance < span.u_required_clearance"
     }
     {
       name: "veg~u_points_ab_veg"

@@ -1,5 +1,5 @@
 {
-  id: "c6c29b808ce4dfcc5c844f5d"
+  id: "9d6abcf5e67d94f4f7283740"
   title: "veg~Span"
   description: null
   root: "Model"
@@ -12,7 +12,37 @@
         {
           collection: "Spans"
           filter: {
-            conditions: []
+            conditions: [
+              {
+                type: "annotated"
+                annotated: {
+                  name: "col:veg~u_encroachment_key"
+                  expr: {
+                    type: "func"
+                    func: {
+                      name: "in"
+                      args: [
+                        {
+                          type: "field"
+                          field: {
+                            name: "veg~u_encroachment_key"
+                          }
+                        }
+                        {
+                          type: "list_str"
+                          list_str: {
+                            value: [
+                              "P3"
+                            ]
+                          }
+                        }
+                      ]
+                      named_args: {}
+                    }
+                  }
+                }
+              }
+            ]
             bounds_filter: "none"
             quick_search: null
           }
@@ -26,13 +56,33 @@
     }
     fields: [
       {
-        name: "veg~u_gis_id"
-        title: "Gis Id"
+        name: "self"
+        title: "Self"
         unit: null
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 100
+        width_px: 111
+        quicksearch: false
+        search_option: "none"
+        show_spatial: false
+        grouped: false
+        colored: false
+        color_map: {
+          type: "key_value_color_list"
+          key_value_color_list: {
+            list: []
+          }
+        }
+      }
+      {
+        name: "length"
+        title: "Length"
+        unit: null
+        decimal_places: 2
+        null_value: ""
+        cell_title: null
+        width_px: 111
         quicksearch: false
         search_option: "none"
         show_spatial: false
@@ -52,7 +102,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 100
+        width_px: 111
         quicksearch: false
         search_option: "none"
         show_spatial: false
@@ -66,13 +116,13 @@
         }
       }
       {
-        name: "veg~u_region_in_gis"
-        title: "Region In Gis"
+        name: "veg~u_required_clearance"
+        title: "Required Clearance"
         unit: null
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 100
+        width_px: 111
         quicksearch: false
         search_option: "none"
         show_spatial: false
@@ -86,13 +136,13 @@
         }
       }
       {
-        name: "veg~u_line_name"
-        title: "Line Name"
+        name: "veg~u_veg_environment.veg~u_encroachment_key"
+        title: "Veg Environment Encroachment Key"
         unit: null
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 100
+        width_px: 111
         quicksearch: false
         search_option: "none"
         show_spatial: false
@@ -112,7 +162,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 124
+        width_px: 111
         quicksearch: false
         search_option: "none"
         show_spatial: false
@@ -136,7 +186,7 @@
               }
               {
                 field_value: "P4"
-                color: "#80FF00"
+                color: "#00FFFF"
               }
               {
                 field_value: "_clear"
@@ -147,242 +197,13 @@
         }
       }
       {
-        name: "veg~u_encroachment_status"
-        title: "Encroachment Status"
-        unit: null
-        decimal_places: 2
-        null_value: ""
-        cell_title: null
-        width_px: 140
-        quicksearch: false
-        search_option: "none"
-        show_spatial: false
-        grouped: false
-        colored: false
-        color_map: {
-          type: "key_value_color_list"
-          key_value_color_list: {
-            list: []
-          }
-        }
-      }
-      {
-        name: "veg~u_encroached_tree_count"
-        title: "Encroached Tree Count"
-        unit: null
-        decimal_places: 2
-        null_value: ""
-        cell_title: null
-        width_px: 100
-        quicksearch: false
-        search_option: "none"
-        show_spatial: false
-        grouped: false
-        colored: false
-        color_map: {
-          type: "color_gradient"
-          color_gradient: {
-            points: [
-              {
-                field_value: 0
-                color: "#00ff00"
-              }
-              {
-                field_value: 10
-                color: "#ff0000"
-              }
-            ]
-          }
-        }
-      }
-      {
-        name: "pole1.label"
-        title: "Pole1 Label"
-        unit: null
-        decimal_places: 2
-        null_value: ""
-        cell_title: null
-        width_px: 100
-        quicksearch: false
-        search_option: "none"
-        show_spatial: false
-        grouped: false
-        colored: false
-        color_map: {
-          type: "key_value_color_list"
-          key_value_color_list: {
-            list: []
-          }
-        }
-      }
-      {
-        name: "pole2.label"
-        title: "Pole2 Label"
-        unit: null
-        decimal_places: 2
-        null_value: ""
-        cell_title: null
-        width_px: 100
-        quicksearch: false
-        search_option: "none"
-        show_spatial: false
-        grouped: false
-        colored: false
-        color_map: {
-          type: "key_value_color_list"
-          key_value_color_list: {
-            list: []
-          }
-        }
-      }
-      {
         name: "veg~u_encroached"
         title: "Encroached"
         unit: null
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 100
-        quicksearch: false
-        search_option: "none"
-        show_spatial: false
-        grouped: false
-        colored: false
-        color_map: {
-          type: "key_value_color_list"
-          key_value_color_list: {
-            list: []
-          }
-        }
-      }
-      {
-        name: "length"
-        title: "Length"
-        unit: null
-        decimal_places: 2
-        null_value: ""
-        cell_title: null
-        width_px: 100
-        quicksearch: false
-        search_option: "none"
-        show_spatial: false
-        grouped: false
-        colored: false
-        color_map: {
-          type: "key_value_color_list"
-          key_value_color_list: {
-            list: []
-          }
-        }
-      }
-      {
-        name: "veg~u_estimate_trim_cost_remaining"
-        title: "Estimate Trim Cost Remaining"
-        unit: null
-        decimal_places: 2
-        null_value: ""
-        cell_title: null
-        width_px: 106
-        quicksearch: false
-        search_option: "none"
-        show_spatial: false
-        grouped: false
-        colored: false
-        color_map: {
-          type: "key_value_color_list"
-          key_value_color_list: {
-            list: []
-          }
-        }
-      }
-      {
-        name: "veg~u_voltage"
-        title: "Voltage"
-        unit: null
-        decimal_places: 2
-        null_value: ""
-        cell_title: null
-        width_px: 100
-        quicksearch: false
-        search_option: "none"
-        show_spatial: false
-        grouped: false
-        colored: false
-        color_map: {
-          type: "key_value_color_list"
-          key_value_color_list: {
-            list: []
-          }
-        }
-      }
-      {
-        name: "veg~u_conductor_type"
-        title: "Conductor Type"
-        unit: null
-        decimal_places: 2
-        null_value: ""
-        cell_title: null
-        width_px: 107
-        quicksearch: false
-        search_option: "none"
-        show_spatial: false
-        grouped: false
-        colored: false
-        color_map: {
-          type: "key_value_color_list"
-          key_value_color_list: {
-            list: []
-          }
-        }
-      }
-      {
-        name: "section.veg~u_conductor_key"
-        title: "Section Conductor Key"
-        unit: null
-        decimal_places: 2
-        null_value: ""
-        cell_title: null
-        width_px: 100
-        quicksearch: false
-        search_option: "none"
-        show_spatial: false
-        grouped: false
-        colored: false
-        color_map: {
-          type: "key_value_color_list"
-          key_value_color_list: {
-            list: []
-          }
-        }
-      }
-      {
-        name: "veg~u_required_clearance"
-        title: "Required Clearance"
-        unit: null
-        decimal_places: 2
-        null_value: ""
-        cell_title: null
-        width_px: 100
-        quicksearch: false
-        search_option: "none"
-        show_spatial: false
-        grouped: false
-        colored: false
-        color_map: {
-          type: "key_value_color_list"
-          key_value_color_list: {
-            list: []
-          }
-        }
-      }
-      {
-        name: "scan_time"
-        title: "Scan Time"
-        unit: null
-        decimal_places: 2
-        null_value: ""
-        cell_title: null
-        width_px: 100
+        width_px: 111
         quicksearch: false
         search_option: "none"
         show_spatial: false
@@ -402,7 +223,7 @@
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 100
+        width_px: 111
         quicksearch: false
         search_option: "none"
         show_spatial: false
@@ -425,93 +246,13 @@
         }
       }
       {
-        name: "veg~u_veg_environment.veg~u_p1_points.num_points"
-        title: "Veg Environment P1 Points Num Points"
+        name: "veg~u_custom_env_sim.veg~u_pass_field"
+        title: "Custom Env Sim Pass Field"
         unit: null
         decimal_places: 2
         null_value: ""
         cell_title: null
-        width_px: 133
-        quicksearch: false
-        search_option: "none"
-        show_spatial: true
-        grouped: false
-        colored: false
-        color_map: {
-          type: "key_value_color_list"
-          key_value_color_list: {
-            list: []
-          }
-        }
-      }
-      {
-        name: "veg~u_veg_environment.veg~u_p2_points.num_points"
-        title: "Veg Environment P2 Points Num Points"
-        unit: null
-        decimal_places: 2
-        null_value: ""
-        cell_title: null
-        width_px: 133
-        quicksearch: false
-        search_option: "none"
-        show_spatial: true
-        grouped: false
-        colored: false
-        color_map: {
-          type: "key_value_color_list"
-          key_value_color_list: {
-            list: []
-          }
-        }
-      }
-      {
-        name: "veg~u_veg_environment.veg~u_p3_points.num_points"
-        title: "Veg Environment P3 Points Num Points"
-        unit: null
-        decimal_places: 2
-        null_value: ""
-        cell_title: null
-        width_px: 133
-        quicksearch: false
-        search_option: "none"
-        show_spatial: true
-        grouped: false
-        colored: false
-        color_map: {
-          type: "key_value_color_list"
-          key_value_color_list: {
-            list: []
-          }
-        }
-      }
-      {
-        name: "veg~u_veg_environment.veg~u_p4_points.num_points"
-        title: "Veg Environment P4 Points Num Points"
-        unit: null
-        decimal_places: 2
-        null_value: ""
-        cell_title: null
-        width_px: 133
-        quicksearch: false
-        search_option: "none"
-        show_spatial: true
-        grouped: false
-        colored: false
-        color_map: {
-          type: "key_value_color_list"
-          key_value_color_list: {
-            list: []
-          }
-        }
-      }
-      {
-        name: "stack.veg~u_veg_auto_qa_points.num_points"
-        title: "Stack Veg Auto Qa Points Num Points"
-        unit: null
-        decimal_places: 2
-        null_value: ""
-        cell_title: null
-        width_px: 122
+        width_px: 135
         quicksearch: false
         search_option: "none"
         show_spatial: false
@@ -532,17 +273,17 @@
     org_id: null
   }
   viz_config: {
-    visualizing: true
-    visualizing_quick_toggle: false
+    visualizing: false
+    visualizing_quick_toggle: true
     visualizing_pinned: false
-    color3d_objects: true
+    color3d_objects: false
     visualize_on_world_terrain: true
     world_geom_source: false
     elevation_geom_source: null
     default_color: {
-      r: 0.25098039215686274
-      g: 0.25098039215686274
-      b: 1
+      r: 0.5
+      g: 1
+      b: 0
       a: 1
     }
     threshold: 5
@@ -552,6 +293,6 @@
   }
   local_mode: false
   global_enabled: true
-  global_search_enabled: false
+  global_search_enabled: true
   properties: {}
 }

@@ -1,5 +1,5 @@
 {
-  id: "a17f93f0ee587c32635ccddd"
+  id: "2693de187b60a5f6d359510"
   title: "veg~Tree"
   description: null
   root: "Model"
@@ -12,7 +12,20 @@
         {
           collection: "veg~u_trees"
           filter: {
-            conditions: []
+            conditions: [
+              {
+                type: "annotated"
+                annotated: {
+                  name: "col:has_nearby_bay"
+                  expr: {
+                    type: "field"
+                    field: {
+                      name: "has_nearby_bay"
+                    }
+                  }
+                }
+              }
+            ]
             bounds_filter: "none"
             quick_search: null
           }
@@ -308,26 +321,6 @@
         null_value: "Clear"
         cell_title: null
         width_px: 168
-        quicksearch: false
-        search_option: "none"
-        show_spatial: false
-        grouped: false
-        colored: false
-        color_map: {
-          type: "key_value_color_list"
-          key_value_color_list: {
-            list: []
-          }
-        }
-      }
-      {
-        name: ""
-        title: ""
-        unit: null
-        decimal_places: 2
-        null_value: ""
-        cell_title: null
-        width_px: 120
         quicksearch: false
         search_option: "none"
         show_spatial: false
